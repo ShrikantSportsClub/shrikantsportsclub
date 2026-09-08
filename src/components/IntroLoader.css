@@ -1,0 +1,48 @@
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050505;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+html.is-intro-active,
+html.is-intro-active body {
+  overflow: hidden;
+}
+
+.intro-loader__logo-wrap {
+  position: relative;
+  width: min(42vw, 220px);
+  overflow: hidden;
+  will-change: filter, opacity, transform;
+  transform-origin: center center;
+}
+
+.intro-loader__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: opacity, transform, filter;
+}
+
+.intro-loader__sweep {
+  position: absolute;
+  inset: -30% -60%;
+  background: linear-gradient(
+    108deg,
+    transparent 38%,
+    rgba(255, 250, 240, 0.06) 46%,
+    rgba(255, 248, 230, 0.2) 50%,
+    rgba(255, 250, 240, 0.06) 54%,
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  opacity: 0;
+}

@@ -1,0 +1,165 @@
+/* =========================================================
+   TYPOGRAPHY SYSTEM — MASTER DESIGN SYSTEM
+   Cormorant Garamond for Editorial Headings
+   Manrope for Body & UI
+========================================================= */
+
+/* Base Typography Reset */
+body, button, input, textarea, select, label {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings — Cormorant Garamond */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.display-hero, .display-editorial {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* H1: clamp(3rem, 6vw, 4rem) -> 48px to 64px */
+h1, .h1 {
+  font-size: clamp(2.75rem, 5.5vw, 4rem);
+  line-height: 1.0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* H2: clamp(2.25rem, 4vw, 3rem) -> 36px to 48px */
+h2, .h2 {
+  font-size: clamp(2.25rem, 4.2vw, 3rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* H3: clamp(1.75rem, 3vw, 2.25rem) -> 28px to 36px */
+h3, .h3 {
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  line-height: 1.12;
+  font-weight: 500;
+}
+
+/* H4: 28px */
+h4, .h4 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+/* H5: 22px */
+h5, .h5 {
+  font-size: clamp(1.15rem, 1.8vw, 1.375rem);
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+/* H6: 18px */
+h6, .h6 {
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Editorial Display Variants */
+.display-hero {
+  font-size: clamp(3.25rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.display-editorial {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1.0;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Body Classes — Manrope */
+p, .body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+/* Luxury Text Accents */
+.gold-text {
+  color: var(--color-accent);
+}
+
+.serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}

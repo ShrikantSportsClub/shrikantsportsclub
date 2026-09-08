@@ -1,0 +1,98 @@
+/* =========================================================
+   DESIGN TOKENS — MASTER DESIGN SYSTEM
+   Strict production tokens for Shrikant Sports Club
+========================================================= */
+
+:root {
+  /* Core Brand Colors */
+  --color-bg: #0C0A09;
+  --color-bg-elevated: #14110F;
+  --color-text-primary: #EFE7D9;
+  --color-accent: #C6A35F;
+  --color-accent-hover: #D4B473;
+  --color-accent-subtle: rgba(198, 163, 95, 0.12);
+
+  /* Legacy Aliases for Cross-Component Harmony */
+  --ink: #0C0A09;
+  --ink-soft: #14110F;
+  --cream: #EFE7D9;
+  --gold: #C6A35F;
+  --gold-soft: rgba(198, 163, 95, 0.45);
+  --muted: rgba(239, 231, 217, 0.65);
+  --max: 1280px;
+
+  /* Derived Supporting Colors */
+  --color-text-secondary: rgba(239, 231, 217, 0.72);
+  --color-text-muted: rgba(239, 231, 217, 0.52);
+  --color-text-faint: rgba(239, 231, 217, 0.32);
+
+  --color-border: rgba(239, 231, 217, 0.14);
+  --color-border-subtle: rgba(239, 231, 217, 0.08);
+  --color-border-accent: rgba(198, 163, 95, 0.35);
+
+  --color-surface: rgba(239, 231, 217, 0.035);
+  --color-surface-hover: rgba(239, 231, 217, 0.06);
+  --color-surface-active: rgba(239, 231, 217, 0.09);
+  --color-surface-card: rgba(239, 231, 217, 0.035);
+
+  /* Typography Fonts */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* 8px-based Spacing System */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 80px;
+  --space-11: 96px;
+  --space-12: 120px;
+  --space-13: 160px;
+
+  /* Section Spacing Tokens */
+  --section-sm-desktop: 80px;
+  --section-md-desktop: 96px;
+  --section-lg-desktop: 120px;
+  --section-xl-desktop: 160px;
+  --section-hero-desktop: 140px;
+
+  --section-sm-mobile: 48px;
+  --section-md-mobile: 64px;
+  --section-lg-mobile: 80px;
+  --section-xl-mobile: 96px;
+  --section-hero-mobile: 100px;
+
+  /* Container */
+  --container-max: 1280px;
+  --container-padding-desktop: 32px;
+  --container-padding-tablet: 24px;
+  --container-padding-mobile: 20px;
+
+  /* Motion & Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 400ms ease;
+  --transition-editorial: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-Index Hierarchy */
+  --z-negative: -1;
+  --z-base: 1;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-header: 500;
+  --z-drawer: 900;
+  --z-modal: 1000;
+  --z-toast: 1100;
+}

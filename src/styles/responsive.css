@@ -1,0 +1,660 @@
+/* =========================================================
+   SHRIKANT SPORTS CLUB — MASTER MOBILE RESPONSIVE STYLES
+   Comprehensive responsive coverage across all screen widths
+   (Mobile: 320px - 639px, Tablet: 640px - 1023px, Desktop: 1024px+)
+========================================================= */
+
+/* -------------------------------------------------------
+   1. GLOBAL CONTAINER & TYPOGRAPHY BREAKPOINTS
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+
+  body {
+    font-size: 0.9375rem;
+  }
+
+  .site-header {
+    padding: 0.75rem var(--container-padding);
+  }
+
+  .header-logo img {
+    height: 34px;
+    width: auto;
+  }
+
+  .header-brand strong {
+    font-size: 0.95rem;
+  }
+
+  .header-brand small {
+    font-size: 0.6rem;
+  }
+}
+
+/* -------------------------------------------------------
+   2. FULLSCREEN NAVIGATION DRAWER (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .fullscreen-menu {
+    padding: 5rem 1.5rem 2rem;
+    overflow-y: auto;
+  }
+
+  .menu-shell nav a {
+    font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+    padding: 0.6rem 0;
+  }
+
+  .menu-meta,
+  .menu-bottom {
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* -------------------------------------------------------
+   3. HERO SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 13vw, 5.2rem);
+    line-height: 0.82;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* -------------------------------------------------------
+   4. LIVING PHOTOGRAPH SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .living-section {
+    height: 160vh !important;
+  }
+
+  .living-card-frame {
+    width: clamp(260px, 85vw, 420px);
+    height: clamp(260px, 46vh, 380px);
+  }
+
+  .living-copy h2 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+  }
+}
+
+/* -------------------------------------------------------
+   5. MORE THAN GANPATI SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .more-than-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .more-than-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .more-than-card {
+    height: clamp(260px, 42vh, 340px);
+  }
+}
+
+/* -------------------------------------------------------
+   6. MOMENTS SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .moments-section {
+    height: 170vh !important;
+  }
+
+  .moments-meta-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+  }
+
+  .moment-frame {
+    width: clamp(220px, 72vw, 320px);
+    height: clamp(200px, 38vh, 320px);
+  }
+}
+
+/* -------------------------------------------------------
+   7. PEOPLE & COMMUNITY SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .people-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .person-card {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+/* -------------------------------------------------------
+   8. GANPATI SCROLL REVEAL SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .ganpati-reveal-section {
+    height: 180vh !important;
+  }
+
+  .ganpati-reveal-canvas {
+    width: 100vw;
+    height: 100svh;
+    max-width: 100vw;
+    max-height: 100svh;
+  }
+
+  .ganpati-reveal-meta {
+    top: clamp(0.75rem, 2.5vh, 1.5rem);
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .ganpati-reveal-title {
+    font-size: clamp(1.6rem, 6.5vw, 3.2rem);
+    letter-spacing: 0.12em;
+  }
+
+  .ganpati-reveal-morya {
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+  }
+
+  .ganpati-reveal-message {
+    bottom: clamp(1.25rem, 3.5vh, 2.5rem);
+    max-width: 95vw;
+    padding: 1rem;
+  }
+}
+
+/* -------------------------------------------------------
+   9. GANESH UTSAV & FULL-SCREEN HERO SECTIONS (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .utsav-section {
+    min-height: 100svh;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .utsav-content {
+    width: calc(100% - 2rem);
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .utsav-content h1,
+  .utsav-content h2,
+  .utsav-content .h1 {
+    font-size: clamp(2.2rem, 8.5vw, 3.4rem);
+    line-height: 1.05;
+  }
+
+  .utsav-content p,
+  .utsav-content .about-hero-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  .utsav-content .hero-actions {
+    margin-top: 1.25rem;
+    gap: 0.75rem;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .utsav-content .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------
+   10. CLOSING SECTION (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .closing-section {
+    height: 140vh !important;
+  }
+
+  .closing-bg-word {
+    font-size: clamp(4rem, 18vw, 12rem);
+  }
+
+  .closing-layer {
+    width: clamp(240px, 86vw, 420px);
+    height: clamp(240px, 44vh, 380px);
+  }
+
+  .closing-copy {
+    padding: 1.25rem 1rem;
+    max-width: 92vw;
+    background: radial-gradient(circle at center, rgba(12, 10, 9, 0.88) 0%, rgba(12, 10, 9, 0.65) 85%, transparent 100%);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-lg);
+  }
+
+  .closing-copy h2 {
+    font-size: clamp(2.2rem, 7.5vw, 3.8rem);
+    flex-wrap: wrap;
+    gap: 0.35em;
+  }
+
+  .closing-morya {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+  }
+
+  .closing-copy p {
+    font-size: clamp(0.875rem, 3.6vw, 1.05rem);
+    line-height: 1.65;
+    margin: 0.85rem auto 0;
+    max-width: 100%;
+    color: #EFE7D9;
+  }
+
+  .closing-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 1.25rem auto 0;
+    gap: 0.75rem;
+  }
+
+  .closing-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .closing-counter {
+    bottom: 1.25rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+/* -------------------------------------------------------
+   11. FOOTER (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+  }
+
+  .footer-col-nav {
+    align-items: center;
+  }
+
+  .footer-col-contact {
+    align-items: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+
+/* -------------------------------------------------------
+   12. ABOUT & HERITAGE TIMELINE (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .about-hero-title {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+
+  .timeline-container::before {
+    left: 20px !important;
+  }
+
+  .timeline-item {
+    width: 100% !important;
+    padding-left: 50px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+
+    left: 0 !important;
+  }
+
+  .timeline-node {
+    left: 11px !important;
+  }
+}
+
+/* -------------------------------------------------------
+   13. GALLERY & CONTACT SUBPAGES (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-form-box {
+    padding: 1.5rem;
+  }
+}
+
+/* -------------------------------------------------------
+   14. GANESH UTSAV SCHEDULE TABLE (MOBILE SCROLL)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .schedule-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .schedule-table {
+    min-width: 600px;
+  }
+}
+
+/* -------------------------------------------------------
+   15. CINEMATIC TIMELINE (MOBILE)
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .timeline-container {
+    width: calc(100% - 2rem);
+    padding-bottom: 7.5rem;
+  }
+
+  .timeline-slide-title {
+    font-size: clamp(1.8rem, 6.5vw, 2.6rem);
+  }
+
+  .timeline-year-watermark {
+    font-size: clamp(4rem, 15vw, 6.5rem);
+    margin-bottom: -0.75rem;
+  }
+
+  .timeline-nav-bar {
+    width: calc(100% - 2rem);
+    bottom: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+
+
+  .timeline-shade {
+    background:
+      linear-gradient(180deg, rgba(12, 10, 9, 0.88) 0%, rgba(12, 10, 9, 0.75) 50%, rgba(12, 10, 9, 0.95) 100%);
+  }
+}
+
+/* =========================================================
+   16. COMPREHENSIVE CROSS-DEVICE SYSTEM OVERRIDES
+   Ensuring 100% responsiveness across Phone, Tablet, & Desktop
+   ========================================================= */
+
+/* Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .site-container,
+  .site-container-narrow,
+  .site-container-wide {
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Medium Tablets & Large Phones (<= 900px) */
+@media (max-width: 900px) {
+  .grid-12 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-6) !important;
+  }
+
+  .grid-12 > * {
+    width: 100% !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+
+  .section-header-split {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+    text-align: left;
+  }
+
+  .contact-connect-inner,
+  .contact-location-inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(2rem, 5vw, 3.5rem) !important;
+  }
+}
+
+/* Mobile Devices (<= 640px) */
+@media (max-width: 640px) {
+  /* Prevent horizontal bleed without breaking position: sticky */
+  html, body, #root {
+    overflow-x: clip !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
+  /* Universal Section Padding on Mobile */
+  .site-section {
+    padding-block: clamp(3rem, 8vh, 4.5rem) !important;
+  }
+
+  .site-section-sm {
+    padding-block: 2rem !important;
+  }
+
+  .site-container {
+    padding-inline: 1.25rem !important;
+  }
+
+  /* All Grids Collapse to Clean 1-Column */
+  .grid-12, .grid-4, .grid-3, .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+  }
+
+  .grid-12 > * {
+    width: 100% !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Utsav Hero Sections Across Subpages */
+  .utsav-section {
+    min-height: 100svh !important;
+    padding-top: 5rem !important;
+    padding-bottom: 2.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+  }
+
+  .utsav-content,
+  .about-hero-top-content {
+    width: calc(100% - 2rem) !important;
+    padding-top: 4rem !important;
+    padding-bottom: 2rem !important;
+    text-align: center !important;
+  }
+
+  .utsav-content h1,
+  .utsav-content h2,
+  .utsav-content .h1 {
+    font-size: clamp(2rem, 9.5vw, 3.2rem) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.03em !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .utsav-content p,
+  .utsav-content .about-hero-desc {
+    font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+    line-height: 1.6 !important;
+    max-width: 92vw !important;
+    margin: 1rem auto 0 !important;
+  }
+
+  /* Buttons & Action Bars */
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 290px !important;
+    margin: 1.25rem auto 0 !important;
+    gap: 0.65rem !important;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 0.825rem !important;
+    justify-content: center !important;
+  }
+
+  /* Tejas Shah Tribute Dual Photos on Mobile */
+  #tejas-shah-tribute [style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  #tejas-shah-tribute [style*="height: 320px"] {
+    height: 280px !important;
+  }
+
+  /* Gallery Albums Mobile Optimization */
+  .luxury-card-interactive [style*="height: 270px"] {
+    height: 220px !important;
+  }
+
+  /* Contact Form Mobile Optimization */
+  .contact-form-wrap {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .contact-field input,
+  .contact-field select,
+  .contact-field textarea {
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+  }
+
+  .contact-map {
+    height: 280px !important;
+  }
+
+  /* Badges and Filter Buttons Wrapping */
+  .btn-sm {
+    padding: 7px 12px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Extra Small Phones (<= 380px, e.g. iPhone SE, compact Androids) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: clamp(2.4rem, 13vw, 3.2rem) !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .utsav-content h1,
+  .utsav-content h2 {
+    font-size: clamp(1.85rem, 9vw, 2.5rem) !important;
+  }
+
+  .site-container {
+    padding-inline: 1rem !important;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .header-brand strong {
+    font-size: 0.85rem !important;
+  }
+}
