@@ -148,14 +148,15 @@
   background:
     linear-gradient(
       90deg,
-      rgba(9, 3, 2, .5),
-      rgba(9, 3, 2, .15) 65%,
-      transparent
+      rgba(9, 3, 2, .82),
+      rgba(9, 3, 2, .48) 65%,
+      rgba(9, 3, 2, .25)
     ),
     linear-gradient(
       0deg,
-      rgba(0, 0, 0, .45),
-      transparent 60%
+      transparent 28%,
+      rgba(0, 0, 0, .35) 60%,
+      rgba(0, 0, 0, .7) 100%
     );
 }
 
@@ -1291,8 +1292,8 @@
 
   background:
     linear-gradient(
-      rgba(12,3,2,.45),
-      rgba(12,3,2,.72)
+      rgba(12,3,2,.65),
+      rgba(12,3,2,.85)
     );
 }
 

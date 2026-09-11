@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Shrikant Sports Club</span>
         <span className="footer-credit">
-          Made with ❤️ <a href="https://indepthseo.com" target="_blank" rel="noopener noreferrer">https://indepthseo.com</a>
+          Made with ❤️ by <a href="https://indepthseo.com" target="_blank" rel="noopener noreferrer">IndepthSEO</a>
         </span>
         <span>GANPATI BAPPA MORYA</span>
       </div>

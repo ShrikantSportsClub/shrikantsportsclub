@@ -150,6 +150,7 @@ export default function CinematicTimeline({ timeline = [] }) {
             </div>
           ) : (
             <div
+              className="timeline-nav-hint"
               style={{
                 fontSize: "0.8rem",
                 letterSpacing: "0.2em",

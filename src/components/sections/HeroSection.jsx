@@ -1,30 +1,12 @@
 import React from "react";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
-import heroVideo from "../../assets/hero/ganpati-hero.mp4";
 import heroPoster from "../../assets/hero/ganpati-hero.png";
 
+const YOUTUBE_VIDEO_ID = "P0LGoPN6jK8";
+const YOUTUBE_EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=0&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&modestbranding=1&fs=0&vq=hd1080&enablejsapi=1`;
+
 export default function HeroSection() {
-  const videoRef = React.useRef(null);
-
-  React.useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.defaultMuted = true;
-      video.muted = true;
-      video.loop = false;
-      video.play().catch(() => {});
-    }
-  }, []);
-
-  const handleVideoEnded = (e) => {
-    const video = e.currentTarget;
-    video.pause();
-    if (video.duration) {
-      video.currentTime = video.duration;
-    }
-  };
-
   return (
     <section
       className="site-section hero-hero-wrap"
@@ -46,31 +28,29 @@ export default function HeroSection() {
           overflow: "hidden",
         }}
       >
-        <video
-          ref={videoRef}
-          src={heroVideo}
-          poster={heroPoster}
-          autoPlay
-          muted
-          playsInline
-          onEnded={handleVideoEnded}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center center",
-            transform: "scale(1.08)",
-            transformOrigin: "center center",
-            filter: "brightness(0.9) contrast(1.04)",
-          }}
+        <img
+          src={heroPoster}
+          alt="Shrikant Ganpati"
+          className="hero-poster-fallback"
         />
+        <div className="hero-youtube-wrap">
+          <iframe
+            src={YOUTUBE_EMBED_URL}
+            title="Ganpati Background Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            tabIndex={-1}
+            className="hero-youtube-iframe"
+          />
+        </div>
         {/* Editorial Vignette & Gradient Overlays */}
         <div
           style={{
             position: "absolute",
             inset: 0,
+            pointerEvents: "none",
             background:
-              "linear-gradient(180deg, rgba(12,10,9,0.3) 0%, rgba(12,10,9,0.08) 40%, rgba(12,10,9,0.6) 85%, #0C0A09 100%)",
+              "linear-gradient(180deg, rgba(12,10,9,0.65) 0%, rgba(12,10,9,0.48) 35%, rgba(12,10,9,0.3) 55%, transparent 72%, transparent 100%)",
           }}
         />
       </div>

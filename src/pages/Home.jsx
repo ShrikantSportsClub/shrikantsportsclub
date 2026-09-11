@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/ui/Button";
 import Lightbox from "../components/ui/Lightbox";
 import GanpatiScrollReveal from "../components/sections/GanpatiScrollReveal";
 
 // Import core assets
-import heroVideo from "../assets/hero/ganpati-hero.mp4";
 import heroPoster from "../assets/hero/ganpati-hero.png";
 
 import livingCommunity from "../assets/living-photograph/Community.png";
@@ -26,10 +24,6 @@ import m6 from "../assets/carousel/moment-06.jpg.jpg";
 import m7 from "../assets/carousel/moment-07.jpg.png";
 import m8 from "../assets/carousel/moment-08.jpg.jpg";
 
-import p1 from "../assets/people/person-01.png";
-import p2 from "../assets/people/person-02.png";
-import p3 from "../assets/people/person-03.png";
-import p4 from "../assets/people/person-04.png";
 
 import utsavVideo from "../assets/ganesh-utsav/ganesh-utsav-2026.mp4";
 import utsavPoster from "../assets/Ganeshotsav2026/ganeshotsav-hero.png";
@@ -78,47 +72,88 @@ function useProgress(ref) {
    HERO SECTION
 ------------------------------------------------------- */
 
+const YOUTUBE_VIDEO_ID = "P0LGoPN6jK8";
+const YOUTUBE_EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=0&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&modestbranding=1&fs=0&vq=hd1080&enablejsapi=1`;
+
 function Hero() {
-  const videoRef = useRef(null);
+  const playerRef = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.defaultMuted = true;
-      video.muted = true;
-      video.loop = false;
-      video.play().catch(() => {});
-    }
-  }, []);
+    let player = null;
 
-  const handleVideoEnded = (e) => {
-    const video = e.currentTarget;
-    video.pause();
-    if (video.duration) {
-      video.currentTime = video.duration;
+    const initPlayer = () => {
+      if (!window.YT || !window.YT.Player) return;
+      const iframe = document.getElementById("hero-youtube-iframe");
+      if (!iframe) return;
+
+      player = new window.YT.Player("hero-youtube-iframe", {
+        events: {
+          onReady: (event) => {
+            event.target.mute();
+            event.target.playVideo();
+          },
+          onStateChange: (event) => {
+            // When video finishes (YT.PlayerState.ENDED === 0), pause on final frame
+            if (event.data === 0) {
+              const duration = event.target.getDuration();
+              event.target.seekTo(Math.max(0, duration - 0.1), true);
+              event.target.pauseVideo();
+            }
+          },
+        },
+      });
+      playerRef.current = player;
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      if (!document.getElementById("yt-iframe-api")) {
+        const tag = document.createElement("script");
+        tag.id = "yt-iframe-api";
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
+
+      const prevOnYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof prevOnYouTubeIframeAPIReady === "function") {
+          prevOnYouTubeIframeAPIReady();
+        }
+        initPlayer();
+      };
     }
-  };
+
+    return () => {
+      if (player && typeof player.destroy === "function") {
+        player.destroy();
+      }
+    };
+  }, []);
 
   return (
     <section className="hero-section" id="home">
       <div className="hero-media">
-        <video
-          ref={videoRef}
-          src={heroVideo}
-          poster={heroPoster}
-          autoPlay
-          muted
-          playsInline
-          onEnded={handleVideoEnded}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center center",
-            transform: "scale(1.08)",
-            transformOrigin: "center center",
-          }}
+        {/* Fallback poster while YouTube buffers */}
+        <img
+          src={heroPoster}
+          alt="Shrikant Ganpati"
+          className="hero-poster-fallback"
         />
+
+        {/* YouTube Video Background */}
+        <div className="hero-youtube-wrap">
+          <iframe
+            id="hero-youtube-iframe"
+            src={YOUTUBE_EMBED_URL}
+            title="Ganpati Background Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            tabIndex={-1}
+            className="hero-youtube-iframe"
+          />
+        </div>
       </div>
 
       <div className="hero-shade" />
@@ -465,11 +500,9 @@ function Moments({ onOpenLightbox }) {
                   className={`moment-frame ${isCenter ? "center" : ""}`}
                   onClick={() => onOpenLightbox(MOMENT_ITEMS, index)}
                   style={{
-                    transform: `translate3d(0, ${
-                      (index % 2 ? 10 : 0) * Math.min(distance, 2)
-                    }px, 0) scale(${
-                      isCenter ? 1 : Math.max(0.88, 0.97 - distance * 0.025)
-                    })`,
+                    transform: `translate3d(0, ${(index % 2 ? 10 : 0) * Math.min(distance, 2)
+                      }px, 0) scale(${isCenter ? 1 : Math.max(0.88, 0.97 - distance * 0.025)
+                      })`,
                     zIndex: isCenter ? 10 : 1,
                     cursor: "pointer",
                   }}
@@ -502,22 +535,45 @@ function Moments({ onOpenLightbox }) {
 }
 
 /* -------------------------------------------------------
-   PEOPLE SECTION (PARALLAX CARDS)
+   CORE COMMITTEE / PEOPLE SECTION
 ------------------------------------------------------- */
 
-const PEOPLE_DATA = [
-  { img: p1, name: "Rohan Deshmukh", role: "Festival Coordinator", category: "Leadership", caption: "Coordinating logistics and devotional arrangements for Ganesh Utsav." },
-  { img: p2, name: "Amit Patil", role: "Sports Convenor", category: "Sports Leadership", caption: "Heading the Shrikant Premier League and state-level carrom tournaments." },
-  { img: p3, name: "Neha Joshi", role: "Cultural Coordinator", category: "Cultural Wing", caption: "Directing traditional arts, dance, drama, and youth talent programs." },
-  { img: p4, name: "Sanjay More", role: "Community Volunteer", category: "Volunteer Force", caption: "Leading medical health drives, blood donation camps, and senior citizen welfare." },
+const CORE_COMMITTEE = [
+  {
+    id: "01",
+    role: "President",
+    name: "Sandeep Ayre",
+  },
+  {
+    id: "02",
+    role: "Vice President",
+    name: "Pranav Nikumbh",
+  },
+  {
+    id: "03",
+    role: "Secretary",
+    name: "Swapnil Patil",
+  },
+  {
+    id: "04",
+    role: "Deputy Secretary",
+    name: "Rupesh Raut",
+  },
+  {
+    id: "05",
+    role: "Treasurer",
+    name: "Milind Gaonkar",
+  },
+  {
+    id: "06",
+    role: "Deputy Treasurer",
+    name: "Sanil Pednekar",
+  },
 ];
 
-function People({ onOpenLightbox }) {
-  const ref = useRef(null);
-  const p = useProgress(ref);
-
+function People() {
   return (
-    <section ref={ref} className="people-section" id="people">
+    <section className="people-section" id="people">
       <div className="people-header">
         <div>
           <div className="eyebrow dark reveal-up" data-reveal>
@@ -531,38 +587,38 @@ function People({ onOpenLightbox }) {
           </h2>
         </div>
 
-        <p className="people-intro reveal-up" data-reveal>
-          Every celebration has people behind it.
-          <br />
-          The planning. The preparation. The coordination.
-          <br />
-          The countless hours behind the scenes.
-        </p>
+        <div className="people-intro-wrap reveal-up" data-reveal>
+          <div className="people-badge">CORE COMMITTEE</div>
+          <p className="people-intro">
+            The dedicated leaders and core committee steering the tradition,
+            community service, and vibrant spirit of Shrikant Sports Club year after year.
+          </p>
+        </div>
       </div>
 
       <div className="people-grid">
-        {PEOPLE_DATA.map((person, index) => (
-          <figure
+        {CORE_COMMITTEE.map((member) => (
+          <article
             className="person-card"
             data-reveal
-            key={person.name}
-            onClick={() => onOpenLightbox(PEOPLE_DATA, index)}
-            style={{
-              transform: `translate3d(0, ${(0.5 - p) * (index % 2 ? 46 : -46)}px, 0)`,
-              cursor: "pointer",
-            }}
-            title="Click to view portrait"
+            key={member.name}
           >
-            <div className="person-image">
-              <img src={person.img} alt={`${person.name}, ${person.role}`} />
-              <div className="person-overlay" />
-              <figcaption className="person-caption">
-                <span>0{index + 1}</span>
-                <strong>{person.name}</strong>
-                <small>{person.role}</small>
-              </figcaption>
+            <div className="person-card-top">
+              <span className="person-card-index">{member.id}</span>
+              <span className="person-card-tag">Core Committee</span>
             </div>
-          </figure>
+
+            <div className="person-card-main">
+              <div className="person-card-role">
+                <span className="person-role-en">{member.role}</span>
+              </div>
+              <h3 className="person-card-name">{member.name}</h3>
+            </div>
+
+            <div className="person-card-footer">
+              <span className="person-card-club">Shrikant Sports Club</span>
+            </div>
+          </article>
         ))}
       </div>
     </section>
@@ -583,14 +639,14 @@ function GaneshUtsav() {
       video.defaultMuted = true;
       video.muted = true;
       video.loop = true;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   }, []);
 
   const handleVideoEnded = (e) => {
     const video = e.currentTarget;
     video.currentTime = 0;
-    video.play().catch(() => {});
+    video.play().catch(() => { });
   };
 
   return (

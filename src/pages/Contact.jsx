@@ -207,7 +207,7 @@ export default function Contact() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="social-link"
+                className="social-link social-instagram"
                 aria-label="Instagram"
               >
                 <img src={instagramIcon} alt="Instagram" />
@@ -217,7 +217,7 @@ export default function Contact() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                className="social-link"
+                className="social-link social-youtube"
                 aria-label="YouTube"
               >
                 <img src={youtubeIcon} alt="YouTube" />
@@ -227,7 +227,7 @@ export default function Contact() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="social-link"
+                className="social-link social-facebook"
                 aria-label="Facebook"
               >
                 <img src={facebookIcon} alt="Facebook" />

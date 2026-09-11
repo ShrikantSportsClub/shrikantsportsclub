@@ -53,7 +53,7 @@ export default function GaneshUtsavHighlightSection() {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(180deg, rgba(12,10,9,0.1) 0%, rgba(12,10,9,0.55) 100%)",
+              background: "linear-gradient(180deg, rgba(12,10,9,0.65) 0%, rgba(12,10,9,0.35) 45%, transparent 72%, transparent 100%)",
             }}
           />
         </div>

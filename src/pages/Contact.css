@@ -64,38 +64,95 @@
   margin: 0 0 var(--space-7) 0;
 }
 
-/* SOCIAL LINKS */
+/* SOCIAL LINKS WITH OFFICIAL BRAND COLORS */
 
 .contact-socials {
   display: flex;
   align-items: center;
   gap: var(--space-4);
+  margin-top: var(--space-2);
 }
 
 .social-link {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  border: 1px solid rgba(239, 231, 217, 0.16);
+  background: rgba(20, 17, 15, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .social-link img {
-  width: 18px;
-  height: 18px;
-  opacity: 0.75;
-  filter: invert(85%) sepia(20%) saturate(300%) hue-rotate(5deg);
-  transition: opacity 200ms ease, transform 200ms ease;
+  width: 26px;
+  height: 26px;
+  opacity: 0.95;
+  filter: none !important;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
-.social-link:hover {
-  border-color: var(--color-border-accent);
-  background: var(--color-surface-hover);
-  transform: translateY(-3px);
+/* Official Instagram Brand Colors */
+.social-link.social-instagram,
+.social-link[aria-label="Instagram"] {
+  border-color: rgba(225, 48, 108, 0.35);
+  background: rgba(225, 48, 108, 0.09);
+  box-shadow: 0 2px 10px rgba(225, 48, 108, 0.12);
+}
+
+.social-link.social-instagram:hover,
+.social-link[aria-label="Instagram"]:hover {
+  border-color: #E1306C;
+  background: rgba(225, 48, 108, 0.22);
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.45);
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* Official YouTube Brand Colors */
+.social-link.social-youtube,
+.social-link[aria-label="YouTube"] {
+  border-color: rgba(255, 0, 0, 0.35);
+  background: rgba(255, 0, 0, 0.09);
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.12);
+}
+
+.social-link.social-youtube img {
+  width: 28px;
+  height: 28px;
+}
+
+.social-link.social-youtube:hover,
+.social-link[aria-label="YouTube"]:hover {
+  border-color: #FF0000;
+  background: rgba(255, 0, 0, 0.22);
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.45);
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* Official Facebook Brand Colors */
+.social-link.social-facebook,
+.social-link[aria-label="Facebook"] {
+  border-color: rgba(24, 119, 242, 0.35);
+  background: rgba(24, 119, 242, 0.09);
+  box-shadow: 0 2px 10px rgba(24, 119, 242, 0.12);
+}
+
+.social-link.social-facebook img {
+  width: 26px;
+  height: 26px;
+}
+
+.social-link.social-facebook:hover,
+.social-link[aria-label="Facebook"]:hover {
+  border-color: #1877F2;
+  background: rgba(24, 119, 242, 0.22);
+  box-shadow: 0 8px 24px rgba(24, 119, 242, 0.45);
+  transform: translateY(-3px) scale(1.08);
 }
 
 .social-link:hover img {

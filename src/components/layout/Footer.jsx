@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/logo/shrikant-sports-club-logo.png.png";
+import instagramIcon from "../../assets/icons/instagram.svg";
+import youtubeIcon from "../../assets/icons/youtube.svg";
+import facebookIcon from "../../assets/icons/facebook.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -30,16 +33,40 @@ export default function Footer() {
         <div className="footer-column">
           <span>CONNECT</span>
           <Link to="/contact">Contact</Link>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook ↗</a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube ↗</a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-social-link footer-social-instagram"
+          >
+            <img src={instagramIcon} alt="" className="footer-social-icon" />
+            <span>Instagram ↗</span>
+          </a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-social-link footer-social-youtube"
+          >
+            <img src={youtubeIcon} alt="" className="footer-social-icon" />
+            <span>YouTube ↗</span>
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-social-link footer-social-facebook"
+          >
+            <img src={facebookIcon} alt="" className="footer-social-icon" />
+            <span>Facebook ↗</span>
+          </a>
         </div>
       </div>
 
       <div className="footer-bottom">
         <span>© {currentYear} Shrikant Sports Club</span>
         <span className="footer-credit">
-          Made with ❤️ <a href="https://indepthseo.com" target="_blank" rel="noopener noreferrer">https://indepthseo.com</a>
+          Made with ❤️ by <a href="https://indepthseo.com" target="_blank" rel="noopener noreferrer">IndepthSEO</a>
         </span>
         <span>GANESH UTSAV 2026</span>
       </div>
