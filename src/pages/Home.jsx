@@ -4,7 +4,6 @@ import Lightbox from "../components/ui/Lightbox";
 import GanpatiScrollReveal from "../components/sections/GanpatiScrollReveal";
 
 // Import core assets
-import heroVideo from "../assets/hero/ganpati-hero.mp4";
 import heroPoster from "../assets/hero/ganpati-hero.png";
 
 import livingCommunity from "../assets/living-photograph/Community.png";
@@ -77,30 +76,110 @@ const YOUTUBE_VIDEO_ID = "P0LGoPN6jK8";
 const YOUTUBE_EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=0&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&modestbranding=1&fs=0&vq=hd1080&enablejsapi=1`;
 
 function Hero() {
-  const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const [videoEnded, setVideoEnded] = useState(false);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.defaultMuted = true;
-      video.muted = true;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Browser autoplay fallback
-        });
-      }
-    }
-  }, []);
+    let player = null;
+    let checkInterval = null;
 
-  const handleVideoEnded = (e) => {
-    const video = e.currentTarget;
-    if (video) {
-      video.pause();
+    const tryPlay = (targetPlayer) => {
+      try {
+        if (targetPlayer && typeof targetPlayer.playVideo === "function") {
+          targetPlayer.mute();
+          targetPlayer.playVideo();
+        }
+      } catch (err) {}
+    };
+
+    const initPlayer = () => {
+      if (!window.YT || !window.YT.Player) return;
+      const iframe = document.getElementById("hero-youtube-iframe");
+      if (!iframe) return;
+
+      player = new window.YT.Player("hero-youtube-iframe", {
+        events: {
+          onReady: (event) => {
+            playerRef.current = event.target;
+            tryPlay(event.target);
+
+            // Periodic time check to detect end of playback cleanly
+            if (checkInterval) clearInterval(checkInterval);
+            checkInterval = setInterval(() => {
+              try {
+                if (
+                  typeof event.target.getCurrentTime === "function" &&
+                  typeof event.target.getDuration === "function"
+                ) {
+                  const cur = event.target.getCurrentTime();
+                  const dur = event.target.getDuration();
+                  if (dur > 0 && cur >= dur - 0.35) {
+                    setVideoEnded(true);
+                    clearInterval(checkInterval);
+                  }
+                }
+              } catch (err) {
+                // Ignore cross-origin / destroyed player errors
+              }
+            }, 250);
+          },
+          onStateChange: (event) => {
+            // When video finishes (YT.PlayerState.ENDED === 0), pause and reveal static image without overlay
+            if (event.data === 0) {
+              setVideoEnded(true);
+              if (checkInterval) clearInterval(checkInterval);
+              try {
+                const duration = event.target.getDuration();
+                event.target.seekTo(Math.max(0, duration - 0.1), true);
+                event.target.pauseVideo();
+              } catch (err) {}
+            }
+          },
+        },
+      });
+      playerRef.current = player;
+    };
+
+    // Mobile touch & interaction unlock to guarantee autoplay on iOS Safari / Android Chrome
+    const handleGesture = () => {
+      if (playerRef.current) {
+        tryPlay(playerRef.current);
+      }
+    };
+    window.addEventListener("touchstart", handleGesture, { passive: true, once: true });
+    window.addEventListener("pointerdown", handleGesture, { passive: true, once: true });
+    window.addEventListener("click", handleGesture, { passive: true, once: true });
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      if (!document.getElementById("yt-iframe-api")) {
+        const tag = document.createElement("script");
+        tag.id = "yt-iframe-api";
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
+
+      const prevOnYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof prevOnYouTubeIframeAPIReady === "function") {
+          prevOnYouTubeIframeAPIReady();
+        }
+        initPlayer();
+      };
     }
-    setVideoEnded(true);
-  };
+
+    return () => {
+      window.removeEventListener("touchstart", handleGesture);
+      window.removeEventListener("pointerdown", handleGesture);
+      window.removeEventListener("click", handleGesture);
+      if (checkInterval) clearInterval(checkInterval);
+      if (player && typeof player.destroy === "function") {
+        player.destroy();
+      }
+    };
+  }, []);
 
   return (
     <section className="hero-section" id="home">
@@ -112,18 +191,18 @@ function Hero() {
           className="hero-poster-fallback"
         />
 
-        {/* Full-bleed vertical & horizontal video background (native cover on mobile) */}
-        <video
-          ref={videoRef}
-          src={heroVideo}
-          poster={heroPoster}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onEnded={handleVideoEnded}
-          className={`hero-video-media ${videoEnded ? "video-ended" : ""}`}
-        />
+        {/* Full-bleed vertical on mobile & widescreen on desktop YouTube video background */}
+        <div className={`hero-youtube-wrap ${videoEnded ? "video-ended" : ""}`}>
+          <iframe
+            id="hero-youtube-iframe"
+            src={YOUTUBE_EMBED_URL}
+            title="Ganpati Background Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            tabIndex={-1}
+            className="hero-youtube-iframe"
+          />
+        </div>
       </div>
 
       {/* Editorial overlays removed on static image when video ends */}

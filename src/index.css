@@ -383,6 +383,10 @@
     width: 177.78svh;
     height: 100vh;
     height: 100svh;
+    min-width: 100vw;
+    /* Zoom by 32% to push YouTube header bar and watermark completely off-screen */
+    transform: translate(-50%, -50%) scale(1.32);
+    pointer-events: none !important;
   }
 }
 
