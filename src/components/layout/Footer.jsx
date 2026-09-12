@@ -34,27 +34,27 @@ export default function Footer() {
           <span>CONNECT</span>
           <Link to="/contact">Contact</Link>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/shrikantsportsclub/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="footer-social-link footer-social-instagram"
           >
             <img src={instagramIcon} alt="" className="footer-social-icon" />
             <span>Instagram ↗</span>
           </a>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/c/ShrikantSportsClub"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="footer-social-link footer-social-youtube"
           >
             <img src={youtubeIcon} alt="" className="footer-social-icon" />
             <span>YouTube ↗</span>
           </a>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/shrikantsportsclub/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="footer-social-link footer-social-facebook"
           >
             <img src={facebookIcon} alt="" className="footer-social-icon" />

@@ -206,9 +206,9 @@ export default function Contact() {
 
             <div className="contact-socials">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/shrikantsportsclub/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="social-link social-instagram"
                 aria-label="Instagram"
               >
@@ -216,9 +216,9 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/c/ShrikantSportsClub"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="social-link social-youtube"
                 aria-label="YouTube"
               >
@@ -226,9 +226,9 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/shrikantsportsclub/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="social-link social-facebook"
                 aria-label="Facebook"
               >
