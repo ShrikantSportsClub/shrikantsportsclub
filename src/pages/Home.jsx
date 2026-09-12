@@ -77,9 +77,11 @@ const YOUTUBE_EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDE
 
 function Hero() {
   const playerRef = useRef(null);
+  const [videoEnded, setVideoEnded] = useState(false);
 
   useEffect(() => {
     let player = null;
+    let checkInterval = null;
 
     const initPlayer = () => {
       if (!window.YT || !window.YT.Player) return;
@@ -91,13 +93,37 @@ function Hero() {
           onReady: (event) => {
             event.target.mute();
             event.target.playVideo();
+
+            // Periodic time check to detect end of playback cleanly
+            if (checkInterval) clearInterval(checkInterval);
+            checkInterval = setInterval(() => {
+              try {
+                if (
+                  typeof event.target.getCurrentTime === "function" &&
+                  typeof event.target.getDuration === "function"
+                ) {
+                  const cur = event.target.getCurrentTime();
+                  const dur = event.target.getDuration();
+                  if (dur > 0 && cur >= dur - 0.35) {
+                    setVideoEnded(true);
+                    clearInterval(checkInterval);
+                  }
+                }
+              } catch (err) {
+                // Ignore cross-origin / destroyed player errors
+              }
+            }, 250);
           },
           onStateChange: (event) => {
-            // When video finishes (YT.PlayerState.ENDED === 0), pause on final frame
+            // When video finishes (YT.PlayerState.ENDED === 0), pause and reveal static image without overlay
             if (event.data === 0) {
-              const duration = event.target.getDuration();
-              event.target.seekTo(Math.max(0, duration - 0.1), true);
-              event.target.pauseVideo();
+              setVideoEnded(true);
+              if (checkInterval) clearInterval(checkInterval);
+              try {
+                const duration = event.target.getDuration();
+                event.target.seekTo(Math.max(0, duration - 0.1), true);
+                event.target.pauseVideo();
+              } catch (err) {}
             }
           },
         },
@@ -126,6 +152,7 @@ function Hero() {
     }
 
     return () => {
+      if (checkInterval) clearInterval(checkInterval);
       if (player && typeof player.destroy === "function") {
         player.destroy();
       }
@@ -135,7 +162,7 @@ function Hero() {
   return (
     <section className="hero-section" id="home">
       <div className="hero-media">
-        {/* Fallback poster while YouTube buffers */}
+        {/* Crystal-clear static image revealed without overlay when video ends */}
         <img
           src={heroPoster}
           alt="Shrikant Ganpati"
@@ -143,7 +170,7 @@ function Hero() {
         />
 
         {/* YouTube Video Background */}
-        <div className="hero-youtube-wrap">
+        <div className={`hero-youtube-wrap ${videoEnded ? "video-ended" : ""}`}>
           <iframe
             id="hero-youtube-iframe"
             src={YOUTUBE_EMBED_URL}
@@ -156,8 +183,9 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hero-shade" />
-      <div className="hero-grain" />
+      {/* Editorial overlays removed on static image when video ends */}
+      <div className={`hero-shade ${videoEnded ? "is-hidden" : ""}`} />
+      <div className={`hero-grain ${videoEnded ? "is-hidden" : ""}`} />
 
       <div className="hero-content">
         <div className="eyebrow reveal-up" data-reveal>

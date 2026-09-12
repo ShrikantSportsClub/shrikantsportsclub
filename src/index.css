@@ -323,6 +323,13 @@
   pointer-events: none;
   z-index: 1;
   background: #0C0A09;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-youtube-wrap.video-ended {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .hero-youtube-wrap::after {
@@ -332,6 +339,7 @@
   background: rgba(12, 10, 9, 0.36);
   pointer-events: none;
   z-index: 2;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-youtube-iframe {
@@ -353,6 +361,13 @@
   background:
     linear-gradient(180deg, rgba(12, 10, 9, 0.65) 0%, rgba(12, 10, 9, 0.5) 30%, rgba(12, 10, 9, 0.32) 55%, transparent 72%, transparent 100%),
     radial-gradient(ellipse at 50% 35%, rgba(12, 10, 9, 0.5) 0%, rgba(12, 10, 9, 0.2) 55%, transparent 72%);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-shade.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .hero-grain {
@@ -361,6 +376,13 @@
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-grain.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .hero-content {
