@@ -33,6 +33,18 @@ export default function CinematicTimeline({ timeline = [] }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [timeline.length, isMobile]);
 
+  const [loadedIndices, setLoadedIndices] = useState(() => new Set([0, 1]));
+
+  useEffect(() => {
+    setLoadedIndices((prev) => {
+      const next = new Set(prev);
+      next.add(activeIndex);
+      if (activeIndex + 1 < timeline.length) next.add(activeIndex + 1);
+      if (activeIndex - 1 >= 0) next.add(activeIndex - 1);
+      return next;
+    });
+  }, [activeIndex, timeline.length]);
+
   const handlePrev = () => {
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : timeline.length - 1));
   };
@@ -61,16 +73,26 @@ export default function CinematicTimeline({ timeline = [] }) {
           minHeight: isMobile ? "640px" : undefined,
         }}
       >
-        {/* Full-width background images with crossfade */}
+        {/* Full-width background images with progressive cached loading */}
         <div className="timeline-bg">
-          {timeline.map((item, idx) => (
-            <div
-              key={`${item.title}-${idx}`}
-              className={`timeline-bg-slide ${idx === activeIndex ? "active" : ""}`}
-            >
-              <img src={item.image} alt={item.title} />
-            </div>
-          ))}
+          {timeline.map((item, idx) => {
+            const isLoaded = loadedIndices.has(idx);
+            return (
+              <div
+                key={`${item.title}-${idx}`}
+                className={`timeline-bg-slide ${idx === activeIndex ? "active" : ""}`}
+              >
+                {isLoaded && (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Cinematic gradient vignette & grain */}

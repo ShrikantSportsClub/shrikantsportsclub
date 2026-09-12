@@ -53,6 +53,27 @@ export default function Lightbox({
 
   if (!isOpen || !currentSrc) return null;
 
+  // Mobile touch swipe gestures
+  const touchStartX = React.useRef(0);
+  const touchStartY = React.useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      if (deltaX < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+  };
+
   return (
     <div
       className="lightbox-overlay"
@@ -85,7 +106,12 @@ export default function Lightbox({
       </div>
 
       {/* Main Image Stage */}
-      <div className="lightbox-stage" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="lightbox-stage"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {count > 1 && (
           <button
             type="button"
@@ -101,6 +127,7 @@ export default function Lightbox({
           <img
             src={currentSrc}
             alt={currentTitle || "Lightbox image"}
+            decoding="async"
             className="lightbox-image"
           />
         </div>

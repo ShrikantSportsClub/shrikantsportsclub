@@ -276,7 +276,7 @@ function LivingPhotograph({ onOpenLightbox }) {
                 }}
                 title="Click to expand photograph"
               >
-                <img src={story.image} alt={story.title} />
+                <img src={story.image} alt={story.title} loading="lazy" decoding="async" />
                 <div className="living-frame-overlay" />
                 <div className="living-frame-edge" />
               </figure>
@@ -345,7 +345,7 @@ function BeyondRow({ data, index, onOpenLightbox }) {
         title="Click to view full photograph"
       >
         <div className="beyond-image-inner">
-          <img src={data.img} alt={data.title} loading="eager" draggable="false" />
+          <img src={data.img} alt={data.title} loading="lazy" decoding="async" draggable="false" />
         </div>
         <div className="beyond-image-overlay" />
       </div>
@@ -508,7 +508,7 @@ function Moments({ onOpenLightbox }) {
                   }}
                   title="Click to view full image"
                 >
-                  <img src={item.src} alt={item.title} />
+                  <img src={item.src} alt={item.title} loading="lazy" decoding="async" />
                   <div className="moment-overlay" />
                   <figcaption>
                     <span>

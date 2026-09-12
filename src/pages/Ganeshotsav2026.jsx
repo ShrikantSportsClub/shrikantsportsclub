@@ -276,19 +276,20 @@ export default function Ganeshotsav2026() {
                 key={evt.id}
                 interactive
                 padding="none"
+                className="event-schedule-card"
                 onClick={() => setSelectedEvent(evt)}
                 style={{
                   cursor: "pointer",
-                  display: "grid",
-                  gridTemplateColumns: "180px 1fr",
                   overflow: "hidden",
                   alignItems: "stretch",
                 }}
               >
-              <div style={{ position: "relative", height: "100%", minHeight: "180px" }}>
+              <div className="event-card-media" style={{ position: "relative" }}>
                 <img
                   src={evt.image}
                   alt={evt.title}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
                 <div
@@ -339,6 +340,8 @@ export default function Ganeshotsav2026() {
           <img
             src={ganeshotsavClosing}
             alt="Ganpati Bappa Morya"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%" }}
           />
         </div>

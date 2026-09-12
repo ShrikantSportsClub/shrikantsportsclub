@@ -39,21 +39,91 @@
    2. FULLSCREEN NAVIGATION DRAWER (MOBILE)
 ------------------------------------------------------- */
 
+body.menu-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
 @media (max-width: 768px) {
   .fullscreen-menu {
-    padding: 5rem 1.5rem 2rem;
-    overflow-y: auto;
+    padding: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
-  .menu-shell nav a {
-    font-size: clamp(1.4rem, 5.5vw, 2.2rem);
-    padding: 0.6rem 0;
+  .fullscreen-menu .menu-shell {
+    width: min(100% - 2.5rem, 560px) !important;
+    min-height: 100svh;
+    height: auto !important;
+    padding-top: max(5.25rem, calc(env(safe-area-inset-top, 0px) + 4.25rem)) !important;
+    padding-bottom: max(2rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem)) !important;
+    padding-inline: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 1.75rem !important;
+  }
+
+  .fullscreen-menu nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.35rem !important;
+    margin: auto 0 !important;
+  }
+
+  .fullscreen-menu nav a {
+    display: grid !important;
+    grid-template-columns: 2.2rem 1fr 1.5rem !important;
+    align-items: center !important;
+    font-size: clamp(1.4rem, 5.4vw, 2.1rem) !important;
+    line-height: 1.25 !important;
+    padding: 0.7rem 0.25rem !important;
+    min-height: 48px; /* Accessible touch target */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    -webkit-tap-highlight-color: rgba(198, 163, 95, 0.15);
+    transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .fullscreen-menu nav a:active {
+    color: var(--color-accent) !important;
+    background: rgba(198, 163, 95, 0.08);
+    transform: scale(0.99);
+  }
+
+  .fullscreen-menu nav i {
+    font-size: 0.7rem !important;
+    opacity: 0.85;
+  }
+
+  .fullscreen-menu nav b {
+    font-size: 1rem !important;
+    opacity: 0.7;
   }
 
   .menu-meta,
   .menu-bottom {
-    font-size: 0.6875rem;
-    letter-spacing: 0.15em;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.14em !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .fullscreen-menu nav a {
+    grid-template-columns: 1.8rem 1fr 1.2rem !important;
+    font-size: clamp(1.2rem, 5.2vw, 1.45rem) !important;
+    padding: 0.6rem 0 !important;
+  }
+
+  .fullscreen-menu nav i {
+    font-size: 0.65rem !important;
+  }
+
+  .fullscreen-menu nav b {
+    font-size: 0.9rem !important;
   }
 }
 
@@ -673,3 +743,83 @@
     font-size: 0.85rem !important;
   }
 }
+
+/* =========================================================
+   17. EVENT SCHEDULE CARDS & SUBPAGE MOBILE POLISH
+   ========================================================= */
+
+.event-schedule-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+}
+
+.event-schedule-card .event-card-media {
+  min-height: 180px;
+}
+
+@media (max-width: 640px) {
+  /* Stack Event Schedule Cards cleanly on mobile */
+  .event-schedule-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .event-schedule-card .event-card-media {
+    height: 190px !important;
+    min-height: 190px !important;
+    width: 100% !important;
+  }
+
+  /* Members Page Mobile Polish */
+  .members-category-tabs {
+    width: 100% !important;
+    padding-inline: 1rem !important;
+    margin-top: 2rem !important;
+    gap: 0.5rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .members-category-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .members-tab-btn {
+    padding: 0.45rem 0.95rem !important;
+    font-size: 0.725rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .category-group-header {
+    width: 100% !important;
+    padding-inline: 1rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .members-groups-container {
+    gap: 2.75rem !important;
+    margin-top: 2.5rem !important;
+  }
+
+  /* Compact 2-column volunteer honor roll on mobile */
+  #volunteers .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+
+  #volunteers [style*="border: 1px solid rgba(198, 163, 95"] {
+    padding: 0.65rem 0.75rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #volunteers .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+

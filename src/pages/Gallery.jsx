@@ -5,412 +5,174 @@ import Button from "../components/ui/Button";
 import Icon from "../components/ui/Icon";
 import Lightbox from "../components/ui/Lightbox";
 
-// Carousel Moments
 import m1 from "../assets/carousel/moment-01.jpg.jpg";
-import m2 from "../assets/carousel/moment-02.jpg.jpg";
-import m3 from "../assets/carousel/moment-03.jpg.jpg";
-import m4 from "../assets/carousel/moment-04.jpg.jpg";
-import m5 from "../assets/carousel/moment-05.jpg.jpg";
-import m6 from "../assets/carousel/moment-06.jpg.jpg";
-import m7 from "../assets/carousel/moment-07.jpg.png";
-import m8 from "../assets/carousel/moment-08.jpg.jpg";
-
-// Ganeshotsav Festival Assets
-import ganeshHero from "../assets/Ganeshotsav2026/ganeshotsav-hero.png";
-import ganeshIntro from "../assets/Ganeshotsav2026/ganeshotsav-intro.png";
-import ganeshClosing from "../assets/Ganeshotsav2026/ganeshotsav-closing.png";
-import evtPooja from "../assets/Ganeshotsav2026/event-pooja.png";
-import evtSatya from "../assets/Ganeshotsav2026/event-satyanarayan.png";
-import evtSports from "../assets/Ganeshotsav2026/event-sports.png";
-import evtDental from "../assets/Ganeshotsav2026/event-dental.png";
-import evtDance from "../assets/Ganeshotsav2026/event-dance.png";
-import evtVisarjan from "../assets/Ganeshotsav2026/event-visarjan.png";
-
-// Historical Milestones
-import tlEye from "../assets/About/timeline-eye-checkup.png";
-import tlHealth from "../assets/About/timeline-health-checkup.png";
-import tlKutumb from "../assets/About/timeline-kutumb-melawa.png";
-import tlRangoli from "../assets/About/timeline-rangoli.png";
-import tlSpl from "../assets/About/timeline-spl.png";
-import tlKhel from "../assets/About/timeline-khel-paithanicha.png";
-import tlCarrom24 from "../assets/About/timeline-carrom-2024.png";
-import tlCarrom25 from "../assets/About/timeline-carrom-2025.png";
-import tlJyeshtha from "../assets/About/timeline-jyeshtha-nagrik.png";
-
-// Heritage & Community
-import aboutBappa from "../assets/about-ganapati.png";
-import aboutLegacy from "../assets/About/about-legacy.jpg";
 import aboutCommunity from "../assets/About/about-community.jpg";
-import tejas1 from "../assets/About/tejas-01.jpg";
-import tejas2 from "../assets/About/tejas-02.jpg";
-import peoplePhoto from "../assets/people.png";
 
-// Devotional & Procession Layers
-import idolPhoto from "../assets/closing/Idol.png";
-import layer1 from "../assets/closing/Layer 1.png";
-import layer2 from "../assets/closing/Layer 2.png";
-import layer3 from "../assets/closing/Layer 3.png";
-import layer4 from "../assets/closing/Layer 4.png";
-import layer6 from "../assets/closing/Layer 6.png";
+// Eagerly import all album images strictly from src/assets/Albums
+const albumImageModules = import.meta.glob(
+  "../assets/Albums/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
+  { eager: true, import: "default" }
+);
 
-// Initiatives & Outreach
-import mtgSports from "../assets/more-than-ganpati/sports.jpg";
-import mtgSocial from "../assets/more-than-ganpati/social.jpg";
-import mtgCulture from "../assets/more-than-ganpati/Culture.png";
-import mtgCommunity from "../assets/more-than-ganpati/Community.jpg";
+// Group images strictly by their exact album folder name
+const albumImagesByFolder = {};
 
-export const ALBUMS = [
+Object.entries(albumImageModules).forEach(([filePath, resolvedUrl]) => {
+  const normalized = filePath.replace(/\\/g, "/");
+  const match = normalized.match(/assets\/Albums\/([^/]+)\//i);
+  if (match && match[1]) {
+    const folder = match[1];
+    if (!albumImagesByFolder[folder]) {
+      albumImagesByFolder[folder] = [];
+    }
+    albumImagesByFolder[folder].push(resolvedUrl);
+  }
+});
+
+const ALBUMS_CONFIG = [
   {
-    id: "aagman",
-    title: "The Sacred Aagman Procession",
+    folder: "SSC Ganapati",
+    id: "ssc-ganapati",
+    title: "SSC Ganapati Celebrations",
     category: "Ganpati",
-    year: "2024",
-    cover: m1,
-    description: "Welcoming Ganapati Bappa with grand dhol-tasha beats, saffron flags, and thousands of devotees.",
-    images: [
-      {
-        src: m1,
-        title: "The Sacred Aagman Procession",
-        caption: "Welcoming Ganapati Bappa with grand dhol-tasha beats and fervent devotion across the streets of Mumbai.",
-        category: "Aagman Sohala · 2024",
-      },
-      {
-        src: ganeshHero,
-        title: "Bappa Arrives at the Mandap",
-        caption: "Flower showers and joyous chants as the sacred idol is ushered into the illuminated grand mandap.",
-        category: "Aagman Sohala · 2024",
-      },
-      {
-        src: aboutBappa,
-        title: "The Divine SSC Murti",
-        caption: "The majestic golden-adorned Ganpati Bappa of Shrikant Sports Club.",
-        category: "Aagman Sohala · 2024",
-      },
-      {
-        src: evtPooja,
-        title: "Welcoming Aarti & Pujan",
-        caption: "Priests and trustees performing the sacred Pranpratishtha welcoming rituals.",
-        category: "Aagman Sohala · 2024",
-      },
-      {
-        src: layer1,
-        title: "Street Procession in Full Glory",
-        caption: "Thousands of neighborhood residents marching together in festive unity.",
-        category: "Aagman Sohala · 2024",
-      },
-      {
-        src: layer2,
-        title: "Echoing Chants of Bappa Morya",
-        caption: "The electric energy and devotion of youth carrying Bappa's palanquin.",
-        category: "Aagman Sohala · 2024",
-      },
-    ],
+    year: "Festival",
+    description: "Sacred moments, divine aartis, grand dhol-tasha aagman processions, and community devotion for Bappa.",
   },
   {
-    id: "maha-aarti",
-    title: "Maha Aarti & Devotional Nights",
-    category: "Ganpati",
-    year: "2024",
-    cover: m2,
-    description: "Hundreds gather every evening for the divine 1000-diya Maha Aarti, devotional bhajans, and shanti path.",
-    images: [
-      {
-        src: m2,
-        title: "Sandhya Maha Aarti",
-        caption: "Hundreds gather for divine evening prayers and blessings under the mandap lights.",
-        category: "Devotion · 2024",
-      },
-      {
-        src: evtSatya,
-        title: "Shri Satyanarayan Mahapooja",
-        caption: "Annual community worship ritual attended by families, youth, and elders.",
-        category: "Devotion · 2024",
-      },
-      {
-        src: layer6,
-        title: "A Quiet Little Prayer",
-        caption: "A child and family offering folded hands at Bappa's sacred feet.",
-        category: "Devotion · 2024",
-      },
-      {
-        src: idolPhoto,
-        title: "The Illuminated Golden Sanctum",
-        caption: "The radiant idol gleaming during late-night Shej Aarti prayers.",
-        category: "Devotion · 2024",
-      },
-      {
-        src: ganeshIntro,
-        title: "Bhakti Sangeet & Bhajans",
-        caption: "Devotees singing classical abhangs and devotional hymns in unison.",
-        category: "Devotion · 2024",
-      },
-    ],
-  },
-  {
-    id: "kutumb-melawa",
-    title: "Kutumb Melawa & Community Feasts",
-    category: "Community",
-    year: "2023",
-    cover: m3,
-    description: "Bringing families together across generations in shared harmony, traditional Mahaprasad, and lifelong bonds.",
-    images: [
-      {
-        src: m3,
-        title: "Kutumb Melawa Gathering",
-        caption: "Bringing families together across generations in shared community harmony.",
-        category: "Community · 2023",
-      },
-      {
-        src: tlKutumb,
-        title: "Grand Mahaprasad Feast",
-        caption: "Over 1,500 community members enjoying sanctified traditional meals together.",
-        category: "Community · 2023",
-      },
-      {
-        src: aboutLegacy,
-        title: "Generations in Fellowship",
-        caption: "Club veterans and next-generation leaders seated in the club hall.",
-        category: "Community · 2023",
-      },
-      {
-        src: mtgCommunity,
-        title: "Laughter, Sweets & Kinship",
-        caption: "Joyful faces celebrating together outside the festivity grounds.",
-        category: "Community · 2023",
-      },
-      {
-        src: aboutCommunity,
-        title: "One Big SSC Family",
-        caption: "The entire neighborhood standing together as one united family.",
-        category: "Community · 2023",
-      },
-    ],
-  },
-  {
-    id: "cricket-spl",
-    title: "SPL Cricket Championship League",
-    category: "Sports",
-    year: "2024",
-    cover: m4,
-    description: "Shrikant Premier League — Mumbai's premier tennis ball cricket tournament fostering athletic excellence.",
-    images: [
-      {
-        src: m4,
-        title: "SPL Finals Climax",
-        caption: "High-stakes cricket action in front of cheering local crowds.",
-        category: "Sports · 2024",
-      },
-      {
-        src: tlSpl,
-        title: "Championship Trophy Ceremony",
-        caption: "The winning team hoisting the coveted Shrikant Premier League trophy.",
-        category: "Sports · 2024",
-      },
-      {
-        src: mtgSports,
-        title: "Athletic Focus on the Pitch",
-        caption: "Youth athletes showcasing their bowling speeds and precision fielding.",
-        category: "Sports · 2024",
-      },
-      {
-        src: evtSports,
-        title: "Tournament Inauguration",
-        caption: "Captains, referees, and club patrons taking the sporting pledge.",
-        category: "Sports · 2024",
-      },
-    ],
-  },
-  {
-    id: "carrom-state",
-    title: "State-Level Carrom Tournaments",
+    folder: "State Level Carrom Competition 2025",
+    id: "carrom-2025",
+    title: "State Level Carrom Competition 2025",
     category: "Sports",
     year: "2025",
-    cover: m5,
-    description: "Maharashtra State-recognized carrom championship featuring national-ranked players and local champions.",
-    images: [
-      {
-        src: m5,
-        title: "Championship Board Showdown",
-        caption: "Intense concentration under tournament spotlights as finalists clash.",
-        category: "Sports · 2025",
-      },
-      {
-        src: tlCarrom24,
-        title: "State Tournament 2024",
-        caption: "Over 120 competitors competing simultaneously across professional boards.",
-        category: "Sports · 2025",
-      },
-      {
-        src: tlCarrom25,
-        title: "40th Anniversary Carrom Open",
-        caption: "Historic competition celebrating four decades of SSC sportsmanship.",
-        category: "Sports · 2025",
-      },
-      {
-        src: tejas2,
-        title: "Mentorship & Sports Spirit",
-        caption: "Presidents and mentors encouraging young participants to achieve their best.",
-        category: "Sports · 2025",
-      },
-    ],
+    description: "Maharashtra state-level carrom championship featuring high-stakes matches, top-ranked players, and trophy honors.",
   },
   {
-    id: "khel-paithani",
-    title: "Khel Paithanicha & Cultural Festivals",
-    category: "Culture",
+    folder: "State Level Carrom Competition 2024",
+    id: "carrom-2024",
+    title: "State Level Carrom Competition 2024",
+    category: "Sports",
+    year: "2024",
+    description: "State-level carrom showdown bringing together masters of the board for an exhilarating tournament in Mumbai.",
+  },
+  {
+    folder: "SPL 2023",
+    id: "spl-2023",
+    title: "Shrikant Premier League (SPL) 2023",
+    category: "Sports",
     year: "2023",
-    cover: m6,
-    description: "Celebrating traditional games, Paithani saree honors, classical music, and folk performances.",
-    images: [
-      {
-        src: m6,
-        title: "Khel Paithanicha Celebration",
-        caption: "Women of the community taking center stage in beloved traditional games.",
-        category: "Culture · 2023",
-      },
-      {
-        src: tlKhel,
-        title: "Paithani Saree Honors",
-        caption: "Honoring quiz and contest winners with authentic Maharashtra Paithani sarees.",
-        category: "Culture · 2023",
-      },
-      {
-        src: evtDance,
-        title: "Classical & Folk Dance",
-        caption: "Youth performing vibrant traditional routines on the cultural stage.",
-        category: "Culture · 2023",
-      },
-      {
-        src: tlRangoli,
-        title: "State-Level Rangoli Contest",
-        caption: "Stunning handcrafted rangoli murals portraying spiritual and civic themes.",
-        category: "Culture · 2023",
-      },
-      {
-        src: mtgCulture,
-        title: "Traditional Dhol Rhythms",
-        caption: "Energizing the festival atmosphere with rhythmic Maharashtrian percussion.",
-        category: "Culture · 2023",
-      },
-    ],
+    description: "High-energy tennis ball cricket tournament fostering athletic excellence, neighborhood camaraderie, and teamwork.",
   },
   {
-    id: "health-camps",
-    title: "Free Medical, Eye & Dental Camps",
+    folder: "Road Naming 2021",
+    id: "road-naming-2021",
+    title: "Neighbourhood Road Naming Ceremony",
+    category: "Community",
+    year: "2021",
+    description: "Historic civic recognition cementing our neighborhood identity and honoring our club's decades of dedicated service.",
+  },
+  {
+    folder: "Khel Paithanicha 2019",
+    id: "khel-paithanicha-2019",
+    title: "Khel Paithanicha 2019",
+    category: "Culture",
+    year: "2019",
+    description: "Celebrating traditional Maharashtrian cultural games, joyful family competition, and neighborhood women empowerment.",
+  },
+  {
+    folder: "Kutumb Melawa 2018",
+    id: "kutumb-melawa-2018",
+    title: "Kutumb Melawa 2018",
+    category: "Community",
+    year: "2018",
+    description: "Grand community gathering uniting generations of club families in harmony, laughter, games, and fellowship.",
+  },
+  {
+    folder: "Jeshtha Nagarik Sanman 2018",
+    id: "jeshtha-nagarik-2018",
+    title: "Jeshtha Nagarik Sanman 2018",
+    category: "Community",
+    year: "2018",
+    description: "Felicitation ceremony honoring senior citizens whose blessings, guidance, and wisdom guide our community.",
+  },
+  {
+    folder: "Free Eye Check Up Camp 2017",
+    id: "eye-checkup-2017",
+    title: "Free Eye Check Up Camp 2017",
     category: "Healthcare",
-    year: "2024",
-    cover: tlEye,
-    description: "Serving the community through free vision screenings, health diagnostics, and medicine distribution.",
-    images: [
-      {
-        src: tlEye,
-        title: "Eye Checkup & Spectacle Camp",
-        caption: "Free optometrist consultations and corrective spectacles for 500+ citizens.",
-        category: "Healthcare · 2024",
-      },
-      {
-        src: tlHealth,
-        title: "Comprehensive Health Camp",
-        caption: "Full physical checkups, blood sugar screenings, and specialist consultations.",
-        category: "Healthcare · 2024",
-      },
-      {
-        src: evtDental,
-        title: "Free Dental Examination",
-        caption: "Oral health screenings and hygiene kits distributed to neighborhood students.",
-        category: "Healthcare · 2024",
-      },
-      {
-        src: mtgSocial,
-        title: "Community Outreach & Care",
-        caption: "Dedicated medical volunteers offering empathetic care to local elders.",
-        category: "Healthcare · 2024",
-      },
-      {
-        src: tlJyeshtha,
-        title: "Senior Citizens Felicitation",
-        caption: "Honoring our elders and providing essential health aid packages.",
-        category: "Healthcare · 2024",
-      },
-    ],
+    year: "2017",
+    description: "Accessible community healthcare initiative offering free vision screenings, doctor consultations, and spectacles.",
   },
   {
-    id: "visarjan-sohala",
-    title: "Grand Visarjan Miravnuk",
-    category: "Ganpati",
-    year: "2024",
-    cover: m8,
-    description: "The emotional, joyous farewell procession carrying Bappa to the Arabian Sea at Girgaon Chowpatty.",
-    images: [
-      {
-        src: m8,
-        title: "The Grand Visarjan Miravnuk",
-        caption: "Saffron gulal, dancing devotees, and heartfelt chants of Pudhchya Varshi Lavkar Ya.",
-        category: "Visarjan · 2024",
-      },
-      {
-        src: evtVisarjan,
-        title: "The Farewell Journey to the Sea",
-        caption: "The entire club escorting Bappa through the illuminated streets of Mumbai.",
-        category: "Visarjan · 2024",
-      },
-      {
-        src: ganeshClosing,
-        title: "Sunset Aarti at Girgaon Chowpatty",
-        caption: "Final prayers whispered at the shoreline under twilight skies.",
-        category: "Visarjan · 2024",
-      },
-      {
-        src: layer3,
-        title: "Celebrating Unbroken Devotion",
-        caption: "Tears and smiles intertwined as the idol meets the sacred waves.",
-        category: "Visarjan · 2024",
-      },
-      {
-        src: layer4,
-        title: "Forever in Our Hearts",
-        caption: "Carrying Bappa's blessings back home to guide us through the year ahead.",
-        category: "Visarjan · 2024",
-      },
-    ],
+    folder: "Health Check Up Camp 2017",
+    id: "health-camp-2017",
+    title: "Comprehensive Health Check Up Camp 2017",
+    category: "Healthcare",
+    year: "2017",
+    description: "General diagnostic medical camp providing vital screenings, blood tests, and health counsel to local families.",
   },
   {
-    id: "volunteers-people",
-    title: "Youth Organizing Brigade & Leaders",
-    category: "People",
-    year: "2024",
-    cover: m7,
-    description: "The selfless volunteers and leaders who dedicate hundreds of hours to make every event safe and memorable.",
-    images: [
-      {
-        src: m7,
-        title: "Youth Organizing Committee",
-        caption: "The core committee responsible for stage, security, and crowd coordination.",
-        category: "People · 2024",
-      },
-      {
-        src: peoplePhoto,
-        title: "The Spirit of Our People",
-        caption: "Generations of club workers standing united in service.",
-        category: "People · 2024",
-      },
-      {
-        src: tejas1,
-        title: "Tribute to Late President Tejas Shah",
-        caption: "Remembering our beloved leader whose vision and warmth inspired us all.",
-        category: "People · 2024",
-      },
-      {
-        src: aboutCommunity,
-        title: "United After a Successful Festival",
-        caption: "Smiles of relief and accomplishment as the 10-day celebration concludes.",
-        category: "People · 2024",
-      },
-    ],
+    folder: "Glass Mosaic Workshop 2017",
+    id: "glass-mosaic-2017",
+    title: "Glass Mosaic Workshop 2017",
+    category: "Culture",
+    year: "2017",
+    description: "Interactive artistic workshop inspiring creative expression, craft skills, and vocational appreciation through glass mosaic.",
+  },
+  {
+    folder: "Selfie With Rangoli 2017",
+    id: "selfie-rangoli-2017",
+    title: "Selfie With Rangoli Contest 2017",
+    category: "Culture",
+    year: "2017",
+    description: "Celebration of festive colors, traditional geometric patterns, and neighborhood artistic talent in rangoli art.",
+  },
+  {
+    folder: "Nityanand Ashran Donation Drive 2017",
+    id: "ashram-donation-2017",
+    title: "Nityanand Ashram Donation Drive 2017",
+    category: "Community",
+    year: "2017",
+    description: "Philanthropic drive distributing essential groceries, blankets, and support materials to Nityanand Ashram.",
+  },
+  {
+    folder: "Old is Gold",
+    id: "old-is-gold",
+    title: "Old is Gold — Heritage Archive",
+    category: "Heritage",
+    year: "Archive",
+    description: "Rare vintage photographs and nostalgic memorabilia from the early founding years of Shrikant Sports Club.",
   },
 ];
 
-const CATEGORIES = ["All Photos", "Ganpati", "Sports", "Culture", "Community", "Healthcare", "People"];
+export const ALBUMS = ALBUMS_CONFIG.map((conf) => {
+  const rawList = albumImagesByFolder[conf.folder] || [];
+  const images = rawList.map((src, idx) => ({
+    src,
+    title: `${conf.title} — Photo ${idx + 1}`,
+    caption: `${conf.title} (${conf.year}) — Photo ${idx + 1} of ${rawList.length}`,
+    category: `${conf.category} · ${conf.year}`,
+  }));
+
+  return {
+    id: conf.id,
+    title: conf.title,
+    category: conf.category,
+    year: conf.year,
+    cover: images[0]?.src || "",
+    description: conf.description,
+    images,
+  };
+}).filter((album) => album.images.length > 0);
+
+const CATEGORIES = [
+  "All Photos",
+  "Ganpati",
+  "Sports",
+  "Community",
+  "Culture",
+  "Healthcare",
+  "Heritage",
+];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All Photos");
@@ -533,6 +295,8 @@ export default function Gallery() {
                 <img
                   src={album.cover}
                   alt={album.title}
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -692,6 +456,8 @@ export default function Gallery() {
                       <img
                         src={thumb.src}
                         alt=""
+                        loading="lazy"
+                        decoding="async"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     </div>
@@ -743,6 +509,8 @@ export default function Gallery() {
           <img
             src={aboutCommunity}
             alt="Shrikant Sports Club Community Celebration"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
           />
         </div>

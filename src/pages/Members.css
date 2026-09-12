@@ -17,6 +17,118 @@
     width: min(1200px, 88%);
     margin: 0 auto;
   }
+
+  /* Committee Members Section (Matching Homepage People Section) */
+  .members-people-section {
+    padding: 6rem 0 8rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .members-category-tabs {
+    width: min(var(--max, 1280px), calc(100% - 3rem));
+    margin: 3.5rem auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .members-tab-btn {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    background: rgba(239, 231, 217, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 0.55rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .members-tab-btn:hover {
+    color: var(--color-accent);
+    border-color: rgba(198, 163, 95, 0.5);
+    background: rgba(198, 163, 95, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .members-tab-btn.active {
+    color: #11100e !important;
+    background: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+    font-weight: 700;
+    box-shadow: 0 4px 18px rgba(198, 163, 95, 0.35);
+  }
+
+  .members-tab-count {
+    font-size: 0.75rem;
+    opacity: 0.85;
+  }
+
+  .members-groups-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    margin-top: 4rem;
+  }
+
+  .members-group-wrap {
+    position: relative;
+  }
+
+  .category-group-header {
+    width: min(var(--max, 1280px), calc(100% - 3rem));
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .category-group-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .category-group-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .category-group-count {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .members-people-grid {
+    margin-top: 0 !important;
+  }
+
+  .members-people-grid .person-card {
+    min-height: 170px;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
   
   
   /* =========================================================

@@ -25,6 +25,8 @@ export default function Contact() {
           <img
             src={peopleImage}
             alt="Connect with Shrikant Sports Club"
+            loading="eager"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%" }}
           />
         </div>
@@ -383,6 +385,8 @@ export default function Contact() {
           <img
             src={aboutCommunity}
             alt="Shrikant Sports Club Community"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
           />
         </div>

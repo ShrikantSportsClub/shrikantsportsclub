@@ -142,7 +142,8 @@ export default function GanpatiScrollReveal() {
                 <img
                   src={layer.src}
                   alt={layer.alt}
-                  loading="eager"
+                  loading="lazy"
+                  decoding="async"
                   className="ganpati-reveal-layer-img"
                 />
               </div>

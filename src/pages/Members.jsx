@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Section from "../components/ui/Section";
 import Container from "../components/ui/Container";
 import Button from "../components/ui/Button";
@@ -8,53 +8,101 @@ import "./Members.css";
 import membersBanner from "../assets/members-banner.png";
 import aboutCommunity from "../assets/About/about-community.jpg";
 
-import p01 from "../assets/people/person-01.png";
-import p02 from "../assets/people/person-02.png";
-import p03 from "../assets/people/person-03.png";
-import p04 from "../assets/people/person-04.png";
-import p05 from "../assets/people/person-05.png";
-import p06 from "../assets/people/person-06.png";
-import p07 from "../assets/people/person-07.png";
-import p08 from "../assets/people/person-08.png";
-import p09 from "../assets/people/person-09.png";
-import p10 from "../assets/people/person-10.png";
-import p11 from "../assets/people/person-11.png";
-import p12 from "../assets/people/person-12.png";
-import p13 from "../assets/people/person-13.png";
-import p14 from "../assets/people/person-14.png";
-import p15 from "../assets/people/person-15.png";
-import p16 from "../assets/people/person-16.png";
-import p17 from "../assets/people/person-17.png";
-import p18 from "../assets/people/person-18.png";
+const FOUNDER_MEMBERS = [
+  { id: "01", name: "Late Vijay Shetye", role: "Founder Member", tag: "Founder Member" },
+  { id: "02", name: "Late Avinash Thorat", role: "Founder Member", tag: "Founder Member" },
+  { id: "03", name: "Pradeep Bhosle", role: "Founder Member", tag: "Founder Member" },
+  { id: "04", name: "Nilesh Vibhakar", role: "Founder Member", tag: "Founder Member" },
+  { id: "05", name: "Tushar Reghe", role: "Founder Member", tag: "Founder Member" },
+  { id: "06", name: "Sudhir Kulkarni", role: "Founder Member", tag: "Founder Member" },
+  { id: "07", name: "Prasad Prabhu", role: "Founder Member", tag: "Founder Member" },
+  { id: "08", name: "Vasant Pai", role: "Founder Member", tag: "Founder Member" },
+  { id: "09", name: "Satish Patil", role: "Founder Member", tag: "Founder Member" },
+  { id: "10", name: "Milind Navghare", role: "Founder Member", tag: "Founder Member" },
+  { id: "11", name: "Prakash Khanapurkar", role: "Founder Member", tag: "Founder Member" },
+];
 
-const COMMITTEE_MEMBERS = [
-  { img: p01, name: "Rohan Deshmukh", role: "Festival Coordinator", id: "01" },
-  { img: p02, name: "Amit Patil", role: "Sports Convenor", id: "02" },
-  { img: p03, name: "Neha Joshi", role: "Cultural Coordinator", id: "03" },
-  { img: p04, name: "Sanjay More", role: "Community Coordinator", id: "04" },
-  { img: p05, name: "Vikas Kadam", role: "Operations Lead", id: "05" },
-  { img: p06, name: "Pooja Sawant", role: "Youth Affairs", id: "06" },
-  { img: p07, name: "Mahesh Shinde", role: "Logistics Lead", id: "07" },
-  { img: p08, name: "Anjali Gokhale", role: "Women's Wing Lead", id: "08" },
-  { img: p09, name: "Siddharth Rane", role: "Sports Team", id: "09" },
-  { img: p10, name: "Sneha Surve", role: "Cultural Team", id: "10" },
-  { img: p11, name: "Prathamesh Bane", role: "Youth Wing", id: "11" },
-  { img: p12, name: "Kavita Salvi", role: "Social Welfare", id: "12" },
-  { img: p13, name: "Shrikant G. Sawant", role: "Founder & Chief Advisor", id: "13" },
-  { img: p14, name: "Chandrakant Patil", role: "Senior Advisor", id: "14" },
-  { img: p15, name: "Sunita Deshmukh", role: "Cultural Advisor", id: "15" },
-  { img: p16, name: "Rajendra Joshi", role: "Sports Advisor", id: "16" },
-  { img: p17, name: "Deepak More", role: "Civic Relations Advisor", id: "17" },
-  { img: p18, name: "Vinod Shinde", role: "Logistics Advisor", id: "18" },
+const CORE_COMMITTEE = [
+  { id: "01", name: "Sandeep Ayre", role: "President", tag: "Core Committee" },
+  { id: "02", name: "Pranav Nikumbh", role: "Vice President", tag: "Core Committee" },
+  { id: "03", name: "Swapnil Patil", role: "Secretary", tag: "Core Committee" },
+  { id: "04", name: "Rupesh Raut", role: "Deputy Secretary", tag: "Core Committee" },
+  { id: "05", name: "Milind Gaonkar", role: "Treasurer", tag: "Core Committee" },
+  { id: "06", name: "Sanil Pednekar", role: "Deputy Treasurer", tag: "Core Committee" },
+];
+
+const EXECUTIVE_COMMITTEE = [
+  { id: "01", name: "Hitesh Dedhia", role: "Executive Member", tag: "Executive Committee" },
+  { id: "02", name: "Mayur Pawar", role: "Executive Member", tag: "Executive Committee" },
+  { id: "03", name: "Vivek Parmar", role: "Executive Member", tag: "Executive Committee" },
+  { id: "04", name: "Siddhant Paralikar", role: "Executive Member", tag: "Executive Committee" },
+  { id: "05", name: "Amey Chavan", role: "Executive Member", tag: "Executive Committee" },
+  { id: "06", name: "Saurabh Sawant", role: "Executive Member", tag: "Executive Committee" },
+  { id: "07", name: "Shashank Shesh", role: "Executive Member", tag: "Executive Committee" },
+];
+
+const ADVISORY_COMMITTEE = [
+  { id: "01", name: "Parag Gandhi", role: "Advisor", tag: "Advisory Committee" },
+  { id: "02", name: "Sameer Chavan", role: "Advisor", tag: "Advisory Committee" },
+  { id: "03", name: "Rashid Siddiqui", role: "Advisor", tag: "Advisory Committee" },
+  { id: "04", name: "Anup Kazani", role: "Advisor", tag: "Advisory Committee" },
+  { id: "05", name: "Vinay Zore", role: "Advisor", tag: "Advisory Committee" },
+  { id: "06", name: "Prakash Chellari", role: "Advisor", tag: "Advisory Committee" },
+];
+
+const CATEGORY_GROUPS = [
+  {
+    id: "founder",
+    title: "Founder Members",
+    badge: "FOUNDATION · 1985",
+    members: FOUNDER_MEMBERS,
+  },
+  {
+    id: "core",
+    title: "Core Committee",
+    badge: "EXECUTIVE LEADERSHIP",
+    members: CORE_COMMITTEE,
+  },
+  {
+    id: "executive",
+    title: "Executive Committee",
+    badge: "OPERATIONS & EVENTS",
+    members: EXECUTIVE_COMMITTEE,
+  },
+  {
+    id: "advisory",
+    title: "Advisory Committee",
+    badge: "GUIDANCE & COUNSEL",
+    members: ADVISORY_COMMITTEE,
+  },
 ];
 
 const VOLUNTEERS = [
-  "Aditya Parab", "Tanvi Khedekar", "Kunal Vichare", "Mayur Sawant",
-  "Rupali Jagtap", "Swapnil Dalvi", "Pravin Shirodkar", "Sayali Redkar",
-  "Nilesh Ghag", "Pooja Gawde", "Sachin Shirke", "Gaurav Parkar",
+  "Jayanti Parmar",
+  "Amit Parmar",
+  "Vinayak Zore",
+  "Kumar Raju",
+  "Bhavesh Poonater",
+  "Bharat Navghare",
+  "Pradeep Ayare",
+  "Prakash Ayare",
+  "Amit Dharod",
+  "Uttam Dharod",
+  "Rashid Siddiqui",
+  "Saquib Siddiqui",
+  "Arun Patil",
+  "Shreyas Shirgaonkar",
+  "Sherry Mathew",
+  "Yajuvendra Sengar",
+  "Siddesh Pawar",
+  "Sharad Pawar",
+  "Ravi Pawar",
+  "Onkar Dichwalkar",
 ];
 
 export default function Members() {
+  const [activeTab, setActiveTab] = useState("all");
+
   useEffect(() => {
     const elements = document.querySelectorAll(".members-reveal, [data-reveal]");
     const observer = new IntersectionObserver(
@@ -72,7 +120,18 @@ export default function Members() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [activeTab]);
+
+  const displayedGroups =
+    activeTab === "all"
+      ? CATEGORY_GROUPS
+      : CATEGORY_GROUPS.filter((group) => group.id === activeTab);
+
+  const totalMembersCount =
+    FOUNDER_MEMBERS.length +
+    CORE_COMMITTEE.length +
+    EXECUTIVE_COMMITTEE.length +
+    ADVISORY_COMMITTEE.length;
 
   return (
     <div className="members-page">
@@ -115,44 +174,89 @@ export default function Members() {
         </div>
       </section>
 
-      {/* 2nd Section: Unified Committee Members (All 18 members in dark theme portrait grid) */}
-      <section className="committee-section" id="committee-members">
-        <div className="members-container">
-          <div className="section-heading members-reveal">
-            <div>
-              <div className="members-eyebrow">
-                <span />
-                OUR TEAM
-              </div>
-              <h2>
-                COMMITTEE <em>MEMBERS.</em>
-              </h2>
+      {/* 2nd Section: COMMITTEE MEMBERS (Matching Homepage "The Heart Behind It All" Layout) */}
+      <section className="people-section members-people-section" id="committee-members">
+        <div className="people-header">
+          <div>
+            <div className="eyebrow dark reveal-up" data-reveal>
+              <span />
+              OUR TEAM
             </div>
-            <div>
-              <p>
-                The dedicated individuals whose tireless year-round effort powers our celebrations, sports tournaments, and social welfare drives.
-              </p>
-            </div>
+            <h2 className="people-title reveal-up" data-reveal>
+              COMMITTEE
+              <br />
+              <em>MEMBERS.</em>
+            </h2>
           </div>
 
-          <div className="portrait-grid members-reveal">
-            {COMMITTEE_MEMBERS.map((member) => (
-              <figure key={member.id} className="member-portrait">
-                <div className="member-circle">
-                  <img src={member.img} alt={member.name} />
-                </div>
-                <figcaption>
-                  <span>{member.id}</span>
-                  <strong>{member.name}</strong>
-                  <small>{member.role}</small>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="people-intro-wrap reveal-up" data-reveal>
+            <div className="people-badge">LEADERSHIP & SERVICE</div>
+            <p className="people-intro">
+              The dedicated individuals whose tireless year-round effort powers our celebrations, sports tournaments, and social welfare drives.
+            </p>
           </div>
+        </div>
+
+        {/* Category Filter Tabs */}
+        <div className="members-category-tabs" data-reveal>
+          <button
+            type="button"
+            className={`members-tab-btn ${activeTab === "all" ? "active" : ""}`}
+            onClick={() => setActiveTab("all")}
+          >
+            All Members <span className="members-tab-count">({totalMembersCount})</span>
+          </button>
+          {CATEGORY_GROUPS.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`members-tab-btn ${activeTab === cat.id ? "active" : ""}`}
+              onClick={() => setActiveTab(cat.id)}
+            >
+              {cat.title} <span className="members-tab-count">({cat.members.length})</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Grouped Committee Grids (Homepage person-card & people-grid Layout) */}
+        <div className="members-groups-container">
+          {displayedGroups.map((group) => (
+            <div className="members-group-wrap" key={group.id} id={group.id}>
+              <div className="category-group-header" data-reveal>
+                <div className="category-group-title-wrap">
+                  <span className="people-badge">{group.badge}</span>
+                  <h3 className="category-group-title">{group.title}</h3>
+                </div>
+                <span className="category-group-count">{group.members.length} Members</span>
+              </div>
+
+              <div className="people-grid members-people-grid">
+                {group.members.map((member) => (
+                  <article
+                    className="person-card"
+                    data-reveal
+                    key={`${group.id}-${member.name}`}
+                  >
+                    <div className="person-card-top">
+                      <span className="person-card-index">{member.id}</span>
+                      <span className="person-card-tag">{member.tag}</span>
+                    </div>
+
+                    <div className="person-card-main">
+                      <div className="person-card-role">
+                        <span className="person-role-en">{member.role}</span>
+                      </div>
+                      <h3 className="person-card-name">{member.name}</h3>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* 3rd Section: Volunteer Honor Roll (Matching Current Website Aesthetics) */}
+      {/* 3rd Section: Volunteer Honor Roll (Exact 20 Volunteers) */}
       <Section
         id="volunteers"
         spacing="xl"
@@ -169,7 +273,7 @@ export default function Members() {
               VOLUNTEER HONOR ROLL
             </h2>
             <p className="body-sm" style={{ color: "var(--color-text-secondary)", marginTop: "6px" }} data-reveal>
-              Recognizing our active youth volunteers assisting in mandap management, crowd coordination, and sports logistics.
+              Recognizing our active youth volunteers assisting in mandap management, crowd coordination, festive drives, and sports logistics.
             </p>
           </div>
 

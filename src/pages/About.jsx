@@ -253,6 +253,8 @@ export default function About() {
               <img
                 src={foundingBanner}
                 alt="Founding of Shrikant Sports Club in 1985"
+                loading="lazy"
+                decoding="async"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
@@ -328,6 +330,8 @@ export default function About() {
                 <img
                   src={shrikant}
                   alt="Shrikant — In Loving Memory"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: "100%",
                     display: "block",
@@ -461,6 +465,8 @@ export default function About() {
                     key={slide.title}
                     src={slide.image}
                     alt={slide.alt}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       position: "absolute",
                       inset: 0,
@@ -906,6 +912,8 @@ export default function About() {
           <img
             src={aboutCommunity}
             alt="Shrikant Sports Club Family Together"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
           />
         </div>
