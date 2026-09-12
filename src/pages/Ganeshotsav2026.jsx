@@ -11,15 +11,15 @@ import hero from "../assets/Ganeshotsav2026/ganeshotsav-hero.png";
 import ganeshotsavClosing from "../assets/Ganeshotsav2026/ganeshotsav-closing.png";
 import ganeshUtsavVideo from "../assets/ganesh-utsav/ganesh-utsav-2026.mp4";
 import aagman from "../assets/Ganeshotsav2026/event-aagman.png";
-import bhajan from "../assets/Ganeshotsav2026/event-bhajan.png";
-import cooking from "../assets/Ganeshotsav2026/event-cooking.png";
-import pooja from "../assets/Ganeshotsav2026/event-pooja.png";
-import sports from "../assets/Ganeshotsav2026/event-sports.png";
-import dental from "../assets/Ganeshotsav2026/event-dental.png";
-import drawing from "../assets/Ganeshotsav2026/event-drawing.png";
-import dance from "../assets/Ganeshotsav2026/event-dance.png";
-import fancyDress from "../assets/Ganeshotsav2026/event-fancy-dress.png";
-import visarjan from "../assets/Ganeshotsav2026/event-visarjan.png";
+import bhajan from "../assets/Ganapati2026/Bhajan Sandhya.png";
+import cooking from "../assets/Ganapati2026/Cooking Competition.png";
+import pooja from "../assets/Ganapati2026/Satyanarayan.png";
+import sports from "../assets/Ganapati2026/Sposrts.png";
+import dental from "../assets/Ganapati2026/Dental.png";
+import drawing from "../assets/Ganapati2026/Drawing.png";
+import dance from "../assets/Ganapati2026/Dance.png";
+import fancyDress from "../assets/Ganapati2026/Facncy.png";
+import visarjan from "../assets/Ganapati2026/Visarjan.png";
 
 const EVENTS = [
   {
