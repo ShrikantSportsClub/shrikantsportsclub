@@ -21,7 +21,7 @@ function PageLoader() {
         alignItems: "center",
         justifyContent: "center",
         gap: "1rem",
-        background: "var(--color-bg, #0C0A09)",
+        background: "var(--color-bg, #FAF8F5)",
       }}
       aria-label="Loading page content"
     >
@@ -29,8 +29,8 @@ function PageLoader() {
         style={{
           width: "36px",
           height: "36px",
-          border: "2px solid rgba(198, 163, 95, 0.2)",
-          borderTopColor: "var(--color-accent, #C6A35F)",
+          border: "2px solid rgba(168, 123, 36, 0.2)",
+          borderTopColor: "var(--color-accent, #A87B24)",
           borderRadius: "50%",
           animation: "pageSpin 0.7s linear infinite",
         }}
@@ -41,7 +41,7 @@ function PageLoader() {
           fontSize: "0.75rem",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "rgba(198, 163, 95, 0.75)",
+          color: "var(--color-accent, #A87B24)",
         }}
       >
         SHRIKANT SPORTS CLUB

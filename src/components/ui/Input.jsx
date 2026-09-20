@@ -98,12 +98,12 @@ export const Select = forwardRef(function Select(
         style={{ cursor: "pointer" }}
         {...props}
       >
-        {placeholder && <option value="" disabled style={{ background: "#14110F" }}>{placeholder}</option>}
+        {placeholder && <option value="" disabled style={{ background: "#FFFFFF", color: "#78716C" }}>{placeholder}</option>}
         {options.map((opt) => {
           const val = typeof opt === "string" ? opt : opt.value;
           const lbl = typeof opt === "string" ? opt : opt.label;
           return (
-            <option key={val} value={val} style={{ background: "#14110F", color: "#EFE7D9" }}>
+            <option key={val} value={val} style={{ background: "#FFFFFF", color: "#1C1917" }}>
               {lbl}
             </option>
           );

@@ -67,9 +67,9 @@
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: rgba(239, 231, 217, 0.05);
-  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FAF8F5;
   font-size: 1.1rem;
   cursor: pointer;
   transition:
@@ -129,10 +129,10 @@
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: rgba(12, 10, 9, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 10, 9, 0.75);
   backdrop-filter: blur(12px);
-  color: var(--color-text-primary);
+  color: #FAF8F5;
   font-size: 1.25rem;
   cursor: pointer;
   position: absolute;
@@ -147,9 +147,9 @@
 }
 
 .lightbox-nav-btn:hover {
-  background: rgba(198, 163, 95, 0.25);
+  background: rgba(168, 123, 36, 0.4);
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: #FFFFFF;
   transform: translateY(-50%) scale(1.08);
 }
 
@@ -175,13 +175,13 @@
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: #FAF8F5;
   letter-spacing: 0.02em;
 }
 
 .lightbox-caption p {
   margin: 0.35rem 0 0;
-  color: var(--color-text-secondary);
+  color: #D6D3CD;
   font-size: 0.875rem;
   line-height: 1.5;
 }

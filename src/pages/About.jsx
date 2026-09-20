@@ -9,7 +9,7 @@ import Icon from "../components/ui/Icon";
 import Lightbox from "../components/ui/Lightbox";
 import CinematicTimeline from "../components/sections/CinematicTimeline";
 
-import aboutHero from "../assets/About/about-hero.png";
+import aboutHero from "../assets/more-than-ganpati/Community.jpg";
 import foundingBanner from "../assets/About/about-founding-banner.png";
 import shrikant from "../assets/About/shrikant.jpg";
 import ganapati from "../assets/About/about-ganapati.png";
@@ -301,7 +301,7 @@ export default function About() {
         id="in-his-memory"
         spacing="xl"
         style={{
-          background: "linear-gradient(180deg, rgba(12,10,9,1) 0%, rgba(18,15,13,0.9) 50%, rgba(12,10,9,1) 100%)",
+          background: "linear-gradient(180deg, var(--color-bg) 0%, #F5EFE6 50%, var(--color-bg) 100%)",
           borderTop: "1px solid var(--color-border)",
           borderBottom: "1px solid var(--color-border)",
         }}
@@ -314,10 +314,10 @@ export default function About() {
                 maxWidth: "380px",
                 margin: "0 auto",
                 padding: "16px",
-                background: "linear-gradient(145deg, rgba(198,163,95,0.18) 0%, rgba(12,10,9,0.95) 100%)",
+                background: "linear-gradient(145deg, #FFFFFF 0%, #FAF6EE 100%)",
                 borderRadius: "var(--radius-xl)",
-                border: "1px solid rgba(198,163,95,0.35)",
-                boxShadow: "0 24px 60px rgba(0,0,0,0.85), 0 0 35px rgba(198,163,95,0.12)",
+                border: "1px solid rgba(168,123,36,0.35)",
+                boxShadow: "0 20px 50px rgba(28,25,23,0.08), 0 0 25px rgba(168,123,36,0.08)",
               }}
             >
               <div
@@ -430,7 +430,7 @@ export default function About() {
         id="tejas-shah-tribute"
         spacing="xl"
         style={{
-          background: "linear-gradient(180deg, rgba(12,10,9,1) 0%, rgba(18,14,12,0.85) 50%, rgba(12,10,9,1) 100%)",
+          background: "linear-gradient(180deg, var(--color-bg) 0%, #F5EFE6 50%, var(--color-bg) 100%)",
           borderTop: "1px solid var(--color-border)",
           borderBottom: "1px solid var(--color-border)",
         }}
@@ -444,10 +444,10 @@ export default function About() {
                 maxWidth: "380px",
                 margin: "0 auto",
                 padding: "16px",
-                background: "linear-gradient(145deg, rgba(198,163,95,0.18) 0%, rgba(12,10,9,0.95) 100%)",
+                background: "linear-gradient(145deg, #FFFFFF 0%, #FAF6EE 100%)",
                 borderRadius: "var(--radius-xl)",
-                border: "1px solid rgba(198,163,95,0.35)",
-                boxShadow: "0 24px 60px rgba(0,0,0,0.85), 0 0 35px rgba(198,163,95,0.12)",
+                border: "1px solid rgba(168,123,36,0.35)",
+                boxShadow: "0 20px 50px rgba(28,25,23,0.08), 0 0 25px rgba(168,123,36,0.08)",
               }}
             >
               <div
@@ -455,9 +455,9 @@ export default function About() {
                   position: "relative",
                   borderRadius: "var(--radius-lg)",
                   overflow: "hidden",
-                  border: "1px solid rgba(198,163,95,0.25)",
+                  border: "1px solid rgba(168,123,36,0.25)",
                   aspectRatio: "1101 / 1285",
-                  background: "#14110F",
+                  background: "var(--color-surface)",
                 }}
               >
                 {TEJAS_SLIDES.map((slide, idx) => (
@@ -495,9 +495,10 @@ export default function About() {
                     width: "32px",
                     height: "32px",
                     borderRadius: "50%",
-                    background: "rgba(12, 10, 9, 0.75)",
-                    border: "1px solid rgba(198, 163, 95, 0.4)",
+                    background: "rgba(255, 255, 255, 0.85)",
+                    border: "1px solid rgba(168, 123, 36, 0.4)",
                     color: "var(--color-accent)",
+                    boxShadow: "0 2px 8px rgba(28, 25, 23, 0.15)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -523,9 +524,10 @@ export default function About() {
                     width: "32px",
                     height: "32px",
                     borderRadius: "50%",
-                    background: "rgba(12, 10, 9, 0.75)",
-                    border: "1px solid rgba(198, 163, 95, 0.4)",
+                    background: "rgba(255, 255, 255, 0.85)",
+                    border: "1px solid rgba(168, 123, 36, 0.4)",
                     color: "var(--color-accent)",
+                    boxShadow: "0 2px 8px rgba(28, 25, 23, 0.15)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -708,7 +710,7 @@ export default function About() {
         description="Our philosophy has remained simple through the years: celebrate life, stay together and create happiness around us."
         headerAlign="left"
         style={{
-          background: "linear-gradient(180deg, rgba(12,10,9,1) 0%, rgba(20,16,13,0.75) 50%, rgba(12,10,9,1) 100%)",
+          background: "linear-gradient(180deg, var(--color-bg) 0%, #F3EDE3 50%, var(--color-bg) 100%)",
           borderTop: "1px solid var(--color-border)",
           borderBottom: "1px solid var(--color-border)",
         }}
@@ -721,7 +723,7 @@ export default function About() {
                 borderRadius: "var(--radius-xl)",
                 overflow: "hidden",
                 border: "1px solid var(--color-border-accent)",
-                boxShadow: "0 24px 60px rgba(0,0,0,0.75)",
+                boxShadow: "0 16px 40px rgba(28,25,23,0.1)",
                 height: "440px",
               }}
             >
@@ -819,10 +821,10 @@ export default function About() {
             <div
               style={{
                 padding: "1.5rem 1.75rem",
-                background: "linear-gradient(135deg, rgba(198,163,95,0.12) 0%, rgba(12,10,9,0.85) 100%)",
+                background: "linear-gradient(135deg, rgba(168,123,36,0.12) 0%, #FFFFFF 100%)",
                 borderLeft: "3px solid var(--color-accent)",
                 borderRadius: "0 var(--radius-md) var(--radius-md) 0",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                boxShadow: "0 8px 24px rgba(28,25,23,0.06)",
               }}
             >
               <div

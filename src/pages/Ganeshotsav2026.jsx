@@ -376,27 +376,71 @@ export default function Ganeshotsav2026() {
 
       {/* Lightbox for Event Preview */}
       {selectedEvent && (
-        <div className="lightbox-backdrop" onClick={() => setSelectedEvent(null)}>
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "1.5rem",
+            background: "rgba(28, 25, 23, 0.72)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
+          onClick={() => setSelectedEvent(null)}
+        >
+          <div
+            style={{
+              position: "relative",
+              maxWidth: "640px",
+              width: "100%",
+              background: "var(--color-bg-elevated, #FFFFFF)",
+              borderRadius: "var(--radius-xl)",
+              border: "1px solid var(--color-border)",
+              boxShadow: "0 24px 60px rgba(28, 25, 23, 0.25)",
+              overflow: "hidden",
+              padding: "1.5rem",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
-              className="lightbox-close"
               onClick={() => setSelectedEvent(null)}
               aria-label="Close event preview"
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                zIndex: 10,
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                background: "rgba(28, 25, 23, 0.06)",
+                border: "1px solid var(--color-border)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "var(--color-text-primary)",
+              }}
             >
-              <Icon name="close" size={20} />
+              <Icon name="close" size={18} />
             </button>
-            <img src={selectedEvent.image} alt={selectedEvent.title} className="lightbox-img" />
-            <div style={{ textAlign: "center", maxWidth: "600px" }}>
-              <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "8px" }}>
+            <div style={{ borderRadius: "var(--radius-lg)", overflow: "hidden", maxHeight: "360px" }}>
+              <img src={selectedEvent.image} alt={selectedEvent.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div style={{ textAlign: "center", marginTop: "1.25rem" }}>
+              <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "8px", marginBottom: "10px" }}>
                 <span className="badge badge-gold">{selectedEvent.date} ({selectedEvent.day})</span>
                 <span className="badge">{selectedEvent.time}</span>
                 <span className="badge">{selectedEvent.location}</span>
               </div>
-              <h3 style={{ color: "var(--color-text-primary)", fontSize: "1.35rem" }}>
+              <h3 style={{ color: "var(--color-text-primary)", fontSize: "1.35rem", fontWeight: 600 }}>
                 {selectedEvent.title}
               </h3>
-              <p className="body-sm" style={{ color: "var(--color-text-secondary)", marginTop: "8px" }}>
+              <p className="body-sm" style={{ color: "var(--color-text-secondary)", marginTop: "8px", lineHeight: 1.6 }}>
                 {selectedEvent.description}
               </p>
             </div>

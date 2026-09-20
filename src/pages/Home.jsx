@@ -8,7 +8,7 @@ import heroPoster from "../assets/hero/ganpati-hero.png";
 
 import livingCommunity from "../assets/living-photograph/Community.png";
 import livingTradition from "../assets/living-photograph/Tradition.png";
-import livingFamily from "../assets/living-photograph/Family.png";
+import livingFamily from "../assets/more-than-ganpati/Community.jpg";
 
 import beyondSports from "../assets/more-than-ganpati/sports.jpg";
 import beyondCulture from "../assets/more-than-ganpati/Culture.png";

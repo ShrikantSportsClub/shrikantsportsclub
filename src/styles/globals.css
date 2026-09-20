@@ -28,14 +28,14 @@ body {
 
 /* Custom Luxury Selection */
 ::selection {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
+  background-color: rgba(168, 123, 36, 0.22);
+  color: var(--color-text-primary);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -43,7 +43,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(239, 231, 217, 0.18);
+  background: rgba(28, 25, 23, 0.16);
   border-radius: var(--radius-pill);
 }
 

@@ -286,10 +286,11 @@ export default function Members() {
                   alignItems: "center",
                   gap: "12px",
                   padding: "1rem 1.25rem",
-                  background: "rgba(12,10,9,0.6)",
+                  background: "var(--color-surface)",
+                  boxShadow: "0 2px 10px rgba(28, 25, 23, 0.04)",
                   borderRadius: "var(--radius-md)",
                   border: "1px solid var(--color-border)",
-                  transition: "border-color 0.3s ease, transform 0.3s ease",
+                  transition: "border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease",
                 }}
               >
                 <div

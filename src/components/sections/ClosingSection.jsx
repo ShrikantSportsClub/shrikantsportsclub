@@ -9,7 +9,7 @@ export default function ClosingSection() {
       id="closing"
       spacing="xl"
       style={{
-        background: "radial-gradient(ellipse at 50% 60%, rgba(198,163,95,0.08) 0%, rgba(12,10,9,1) 75%)",
+        background: "radial-gradient(ellipse at 50% 60%, rgba(168,123,36,0.06) 0%, var(--color-bg) 75%)",
         borderTop: "1px solid var(--color-border)",
       }}
     >

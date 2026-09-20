@@ -274,6 +274,7 @@ export default function Gallery() {
                 overflow: "hidden",
                 border: "1px solid var(--color-border)",
                 background: "var(--color-surface)",
+                boxShadow: "0 4px 20px rgba(28, 25, 23, 0.05)",
                 display: "flex",
                 flexDirection: "column",
                 transition: "all 350ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -282,16 +283,16 @@ export default function Gallery() {
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-6px)";
                 e.currentTarget.style.borderColor = "var(--color-border-accent)";
-                e.currentTarget.style.boxShadow = "0 16px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(212, 175, 55, 0.15)";
+                e.currentTarget.style.boxShadow = "0 16px 36px rgba(28, 25, 23, 0.1), 0 0 24px rgba(168, 123, 36, 0.12)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "none";
                 e.currentTarget.style.borderColor = "var(--color-border)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(28, 25, 23, 0.05)";
               }}
             >
               {/* Cover Photo with Stacked Album Depth */}
-              <div style={{ position: "relative", height: "270px", overflow: "hidden", background: "#0C0A09" }}>
+              <div style={{ position: "relative", height: "270px", overflow: "hidden", background: "var(--color-surface)" }}>
                 <img
                   src={album.cover}
                   alt={album.title}
@@ -345,14 +346,15 @@ export default function Gallery() {
                   <span
                     className="caption"
                     style={{
-                      background: "rgba(12, 10, 9, 0.85)",
+                      background: "rgba(255, 255, 255, 0.9)",
                       backdropFilter: "blur(6px)",
                       padding: "4px 10px",
                       borderRadius: "var(--radius-pill)",
                       fontSize: "0.7rem",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      border: "1px solid var(--color-border)",
                       color: "var(--color-text-primary)",
                       letterSpacing: "0.08em",
+                      boxShadow: "0 2px 6px rgba(28, 25, 23, 0.08)",
                     }}
                   >
                     {album.year}

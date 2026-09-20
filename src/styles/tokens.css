@@ -5,35 +5,35 @@
 
 :root {
   /* Core Brand Colors */
-  --color-bg: #0C0A09;
-  --color-bg-elevated: #14110F;
-  --color-text-primary: #EFE7D9;
-  --color-accent: #C6A35F;
-  --color-accent-hover: #D4B473;
-  --color-accent-subtle: rgba(198, 163, 95, 0.12);
+  --color-bg: #FAF8F5;
+  --color-bg-elevated: #FFFFFF;
+  --color-text-primary: #1C1917;
+  --color-accent: #A87B24;
+  --color-accent-hover: #8C651A;
+  --color-accent-subtle: rgba(168, 123, 36, 0.1);
 
   /* Legacy Aliases for Cross-Component Harmony */
-  --ink: #0C0A09;
-  --ink-soft: #14110F;
-  --cream: #EFE7D9;
-  --gold: #C6A35F;
-  --gold-soft: rgba(198, 163, 95, 0.45);
-  --muted: rgba(239, 231, 217, 0.65);
+  --ink: #1C1917;
+  --ink-soft: #44403C;
+  --cream: #FAF8F5;
+  --gold: #A87B24;
+  --gold-soft: rgba(168, 123, 36, 0.4);
+  --muted: #78716C;
   --max: 1280px;
 
   /* Derived Supporting Colors */
-  --color-text-secondary: rgba(239, 231, 217, 0.72);
-  --color-text-muted: rgba(239, 231, 217, 0.52);
-  --color-text-faint: rgba(239, 231, 217, 0.32);
+  --color-text-secondary: #44403C;
+  --color-text-muted: #78716C;
+  --color-text-faint: #A8A29E;
 
-  --color-border: rgba(239, 231, 217, 0.14);
-  --color-border-subtle: rgba(239, 231, 217, 0.08);
-  --color-border-accent: rgba(198, 163, 95, 0.35);
+  --color-border: #E7E2D9;
+  --color-border-subtle: #F0EAE1;
+  --color-border-accent: rgba(168, 123, 36, 0.35);
 
-  --color-surface: rgba(239, 231, 217, 0.035);
-  --color-surface-hover: rgba(239, 231, 217, 0.06);
-  --color-surface-active: rgba(239, 231, 217, 0.09);
-  --color-surface-card: rgba(239, 231, 217, 0.035);
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F8F5EE;
+  --color-surface-active: #EFE9DF;
+  --color-surface-card: #FFFFFF;
 
   /* Typography Fonts */
   --font-display: "Cormorant Garamond", Georgia, serif;

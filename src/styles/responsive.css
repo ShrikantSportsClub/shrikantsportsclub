@@ -351,7 +351,7 @@ body.menu-open {
   .closing-copy {
     padding: 1.25rem 1rem;
     max-width: 92vw;
-    background: radial-gradient(circle at center, rgba(12, 10, 9, 0.88) 0%, rgba(12, 10, 9, 0.65) 85%, transparent 100%);
+    background: radial-gradient(circle at center, rgba(250, 248, 245, 0.94) 0%, rgba(250, 248, 245, 0.75) 85%, transparent 100%);
     backdrop-filter: blur(8px);
     border-radius: var(--radius-lg);
   }
@@ -533,10 +533,10 @@ body.menu-open {
     display: block !important;
     background: linear-gradient(
       180deg,
-      rgba(12, 10, 9, 0.2) 0%,
-      rgba(12, 10, 9, 0.6) 35%,
-      rgba(12, 10, 9, 0.9) 75%,
-      rgba(12, 10, 9, 0.96) 100%
+      rgba(250, 248, 245, 0.2) 0%,
+      rgba(250, 248, 245, 0.65) 35%,
+      rgba(250, 248, 245, 0.92) 75%,
+      rgba(250, 248, 245, 0.98) 100%
     ) !important;
   }
 }

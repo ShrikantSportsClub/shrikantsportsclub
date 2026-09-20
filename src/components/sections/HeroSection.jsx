@@ -180,11 +180,11 @@ export default function HeroSection() {
             gap: "var(--space-5)",
           }}
         >
-          <div className="eyebrow" data-reveal="fade">
+          <div className="eyebrow" data-reveal="fade" style={{ color: "#E2B96A", textShadow: "0 2px 10px rgba(0, 0, 0, 0.85)" }}>
             SHRIKANT SPORTS CLUB PRESENTS
           </div>
 
-          <h1 className="display-hero" data-reveal style={{ textTransform: "uppercase" }}>
+          <h1 className="display-hero" data-reveal style={{ textTransform: "uppercase", color: "#FFFFFF", textShadow: "0 4px 20px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.9)" }}>
             <span>GANAPATI </span>
             <span className="gold-text">BAPPA MORYA</span>
           </h1>
@@ -223,7 +223,7 @@ export default function HeroSection() {
           gap: "var(--space-2)",
         }}
       >
-        <span className="caption" style={{ letterSpacing: "0.2em", color: "var(--color-text-muted)" }}>
+        <span className="caption" style={{ letterSpacing: "0.2em", color: "#D6D3CD", textShadow: "0 2px 8px rgba(0, 0, 0, 0.8)" }}>
           SCROLL TO DISCOVER
         </span>
         <div

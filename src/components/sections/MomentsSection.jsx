@@ -3,6 +3,7 @@ import Section from "../ui/Section";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 import Button from "../ui/Button";
+import Lightbox from "../ui/Lightbox";
 
 import m1 from "../../assets/carousel/moment-01.jpg.jpg";
 import m2 from "../../assets/carousel/moment-02.jpg.jpg";
@@ -99,11 +100,11 @@ export default function MomentsSection() {
                 <span className="caption gold-text" style={{ fontSize: "0.6875rem" }}>
                   {moment.tag}
                 </span>
-                <p style={{ color: "var(--color-text-primary)", fontSize: "0.875rem", fontWeight: 600 }}>
+                <p style={{ color: "#FFFFFF", fontSize: "0.875rem", fontWeight: 600 }}>
                   {moment.title}
                 </p>
               </div>
-              <span className="caption" style={{ color: "var(--color-text-muted)" }}>
+              <span className="caption" style={{ color: "rgba(255, 255, 255, 0.75)" }}>
                 0{idx + 1}
               </span>
             </div>
@@ -113,25 +114,13 @@ export default function MomentsSection() {
 
       {/* Lightbox Modal */}
       {selectedImage && (
-        <div className="lightbox-backdrop" onClick={() => setSelectedImage(null)}>
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="lightbox-close"
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close image preview"
-            >
-              <Icon name="close" size={20} />
-            </button>
-            <img src={selectedImage.src} alt={selectedImage.title} className="lightbox-img" />
-            <div style={{ textAlign: "center" }}>
-              <span className="caption gold-text">{selectedImage.tag}</span>
-              <h3 style={{ color: "var(--color-text-primary)", fontSize: "1.25rem", marginTop: "4px" }}>
-                {selectedImage.title}
-              </h3>
-            </div>
-          </div>
-        </div>
+        <Lightbox
+          isOpen={Boolean(selectedImage)}
+          onClose={() => setSelectedImage(null)}
+          images={MOMENTS.map((m) => ({ src: m.src, title: m.title, category: m.tag }))}
+          currentIndex={MOMENTS.findIndex((m) => m.title === selectedImage.title)}
+          onIndexChange={(idx) => setSelectedImage(MOMENTS[idx])}
+        />
       )}
     </Section>
   );

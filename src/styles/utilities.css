@@ -164,15 +164,18 @@
   padding: var(--space-6);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(28, 25, 23, 0.05);
   transition:
     background-color var(--transition-base),
     border-color var(--transition-base),
+    box-shadow var(--transition-base),
     transform var(--transition-base);
 }
 
 .luxury-card-interactive:hover {
   background: var(--color-surface-hover);
   border-color: var(--color-border-accent);
+  box-shadow: 0 12px 32px rgba(28, 25, 23, 0.1);
   transform: translateY(-2px);
 }
 

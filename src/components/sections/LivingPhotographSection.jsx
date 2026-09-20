@@ -4,7 +4,7 @@ import Section from "../ui/Section";
 import Card from "../ui/Card";
 import communityImg from "../../assets/living-photograph/Community.png";
 import traditionImg from "../../assets/living-photograph/Tradition.png";
-import familyImg from "../../assets/living-photograph/Family.png";
+import familyImg from "../../assets/more-than-ganpati/Community.jpg";
 
 const STORIES = [
   {
@@ -102,7 +102,7 @@ export default function LivingPhotographSection() {
                 <span className="caption gold-text" style={{ letterSpacing: "0.15em" }}>
                   {currentStory.kicker}
                 </span>
-                <h4 style={{ color: "var(--color-text-primary)", marginTop: "4px" }}>
+                <h4 style={{ color: "#FFFFFF", marginTop: "4px" }}>
                   {currentStory.title}
                 </h4>
               </div>

@@ -71,16 +71,16 @@ export default function GaneshUtsavHighlightSection() {
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <Badge variant="gold">Grand 10-Day Festival</Badge>
-            <div className="caption" style={{ letterSpacing: "0.15em", color: "var(--color-text-primary)" }}>
+            <div className="caption" style={{ letterSpacing: "0.15em", color: "#FFFFFF" }}>
               MUMBAI · 2026
             </div>
           </div>
 
           <div style={{ maxWidth: "600px" }}>
-            <h3 style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", color: "var(--color-text-primary)" }}>
+            <h3 style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", color: "#FFFFFF" }}>
               The Sacred Aagman to Visarjan
             </h3>
-            <p className="body-base" style={{ color: "var(--color-text-secondary)", marginTop: "var(--space-2)" }}>
+            <p className="body-base" style={{ color: "rgba(255, 255, 255, 0.88)", marginTop: "var(--space-2)" }}>
               Experience authentic Maharashtrian cultural celebrations, Dhol Tasha beats, grand daily aartis, and compassionate community outreach.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-4)", marginTop: "var(--space-6)" }}>
